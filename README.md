@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://via.placeholder.com/200x80?text=Atman" alt="Atman Design System" width="200" />
+  <img src=".storybook/public/atman-logo-full.svg" alt="Atman Design System" width="280" />
 </p>
 
 <h1 align="center">Atman Design System</h1>
