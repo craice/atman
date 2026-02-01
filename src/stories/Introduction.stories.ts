@@ -160,7 +160,7 @@ export const Introduction: Story = {
 
     <div class="intro-container">
       <div class="intro-header">
-        <img src="/atman-logo-full.svg" alt="Atman" style="height: 96px; margin: 24px auto;" />
+        <img src="./atman-logo-full.svg" alt="Atman" style="height: 96px; margin: 24px auto;" />
         <p class="intro-subtitle">
           A lean, accessible, and modern Design System built with Web Components.
           <br />
