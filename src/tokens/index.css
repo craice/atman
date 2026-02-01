@@ -1,0 +1,273 @@
+/**
+ * Atman Design System - Design Tokens
+ * CSS Custom Properties for theming
+ */
+
+:root {
+  /* ===== Colors - Light Mode ===== */
+
+  /* Primary */
+  --atman-color-primary: #111111;
+  --atman-color-primary-hover: #333333;
+  --atman-color-primary-active: #222222;
+  --atman-color-primary-light: #F5F5F5;
+
+  /* Secondary */
+  --atman-color-secondary: #5F6368;
+  --atman-color-secondary-hover: #4A4E52;
+  --atman-color-secondary-active: #3C4043;
+  --atman-color-secondary-light: #F1F3F4;
+
+  /* Success */
+  --atman-color-success: #1E8E3E;
+  --atman-color-success-hover: #187A34;
+  --atman-color-success-active: #13662A;
+  --atman-color-success-light: #E6F4EA;
+
+  /* Warning */
+  --atman-color-warning: #F9AB00;
+  --atman-color-warning-hover: #E09900;
+  --atman-color-warning-active: #C68600;
+  --atman-color-warning-light: #FEF7E0;
+
+  /* Destructive */
+  --atman-color-destructive: #D93025;
+  --atman-color-destructive-hover: #C12B21;
+  --atman-color-destructive-active: #A8251C;
+  --atman-color-destructive-light: #FCE8E6;
+
+  /* Neutral */
+  --atman-color-neutral-50: #FAFAFA;
+  --atman-color-neutral-100: #F5F5F5;
+  --atman-color-neutral-200: #EEEEEE;
+  --atman-color-neutral-300: #E0E0E0;
+  --atman-color-neutral-400: #BDBDBD;
+  --atman-color-neutral-500: #9E9E9E;
+  --atman-color-neutral-600: #757575;
+  --atman-color-neutral-700: #616161;
+  --atman-color-neutral-800: #424242;
+  --atman-color-neutral-900: #212121;
+
+  /* Semantic Colors */
+  --atman-color-background: #FFFFFF;
+  --atman-color-background-subtle: var(--atman-color-neutral-50);
+  --atman-color-surface: #FFFFFF;
+  --atman-color-surface-hover: var(--atman-color-neutral-100);
+  --atman-color-border: var(--atman-color-neutral-300);
+  --atman-color-border-subtle: var(--atman-color-neutral-200);
+  --atman-color-text: var(--atman-color-neutral-900);
+  --atman-color-text-secondary: var(--atman-color-neutral-600);
+  --atman-color-text-tertiary: var(--atman-color-neutral-500);
+  --atman-color-text-inverse: #FFFFFF;
+  --atman-color-text-on-primary: #FFFFFF;
+
+  /* ===== Spacing ===== */
+  --atman-space-0: 0;
+  --atman-space-1: 4px;
+  --atman-space-2: 8px;
+  --atman-space-3: 12px;
+  --atman-space-4: 16px;
+  --atman-space-5: 24px;
+  --atman-space-6: 32px;
+  --atman-space-7: 48px;
+  --atman-space-8: 64px;
+  --atman-space-9: 96px;
+
+  /* ===== Typography ===== */
+  --atman-font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  --atman-font-family-mono: 'Geist Mono', 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace;
+
+  /* Font Sizes */
+  --atman-font-size-xs: 12px;
+  --atman-font-size-sm: 14px;
+  --atman-font-size-md: 16px;
+  --atman-font-size-lg: 18px;
+  --atman-font-size-xl: 20px;
+  --atman-font-size-2xl: 24px;
+  --atman-font-size-3xl: 32px;
+  --atman-font-size-4xl: 48px;
+
+  /* Font Weights */
+  --atman-font-weight-regular: 400;
+  --atman-font-weight-medium: 500;
+  --atman-font-weight-semibold: 600;
+  --atman-font-weight-bold: 700;
+
+  /* Line Heights */
+  --atman-line-height-tight: 1.2;
+  --atman-line-height-normal: 1.5;
+  --atman-line-height-relaxed: 1.75;
+
+  /* ===== Border Radius ===== */
+  --atman-radius-sm: 4px;
+  --atman-radius-md: 8px;
+  --atman-radius-lg: 12px;
+  --atman-radius-full: 9999px;
+
+  /* ===== Shadows ===== */
+  --atman-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --atman-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --atman-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --atman-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+
+  /* ===== Transitions ===== */
+  --atman-duration-fast: 150ms;
+  --atman-duration-normal: 200ms;
+  --atman-duration-slow: 300ms;
+  --atman-easing-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --atman-easing-in: cubic-bezier(0.4, 0, 1, 1);
+  --atman-easing-out: cubic-bezier(0, 0, 0.2, 1);
+  --atman-easing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ===== Z-Index ===== */
+  --atman-z-dropdown: 1000;
+  --atman-z-sticky: 1100;
+  --atman-z-fixed: 1200;
+  --atman-z-modal-backdrop: 1300;
+  --atman-z-modal: 1400;
+  --atman-z-popover: 1500;
+  --atman-z-tooltip: 1600;
+  --atman-z-toast: 1700;
+
+  /* ===== Focus ===== */
+  --atman-focus-ring-color: rgba(0, 0, 0, 0.3);
+  --atman-focus-ring-width: 3px;
+  --atman-focus-ring-offset: 2px;
+}
+
+/* ===== Dark Mode ===== */
+[data-theme="dark"],
+.atman-dark {
+  /* Primary (White for dark mode) */
+  --atman-color-primary: #FFFFFF;
+  --atman-color-primary-hover: #E0E0E0;
+  --atman-color-primary-active: #CCCCCC;
+  --atman-color-primary-light: #333333;
+
+  /* Secondary */
+  --atman-color-secondary: #9AA0A6;
+  --atman-color-secondary-hover: #BDC1C6;
+  --atman-color-secondary-active: #E8EAED;
+  --atman-color-secondary-light: #3C4043;
+
+  /* Success */
+  --atman-color-success: #81C995;
+  --atman-color-success-hover: #A8DAB5;
+  --atman-color-success-active: #CEEAD6;
+  --atman-color-success-light: #1E3A29;
+
+  /* Warning */
+  --atman-color-warning: #FDD663;
+  --atman-color-warning-hover: #FDE293;
+  --atman-color-warning-active: #FEEFC3;
+  --atman-color-warning-light: #3D3523;
+
+  /* Destructive */
+  --atman-color-destructive: #F28B82;
+  --atman-color-destructive-hover: #F5ABA4;
+  --atman-color-destructive-active: #F8CBC6;
+  --atman-color-destructive-light: #4A2623;
+
+  /* Neutral - inverted for dark mode */
+  --atman-color-neutral-50: #212121;
+  --atman-color-neutral-100: #303030;
+  --atman-color-neutral-200: #424242;
+  --atman-color-neutral-300: #4A4A4A;
+  --atman-color-neutral-400: #616161;
+  --atman-color-neutral-500: #757575;
+  --atman-color-neutral-600: #9E9E9E;
+  --atman-color-neutral-700: #BDBDBD;
+  --atman-color-neutral-800: #E0E0E0;
+  --atman-color-neutral-900: #F5F5F5;
+
+  /* Semantic Colors */
+  --atman-color-background: #121212;
+  --atman-color-background-subtle: #1E1E1E;
+  --atman-color-surface: #1E1E1E;
+  --atman-color-surface-hover: #2D2D2D;
+  --atman-color-border: #3C3C3C;
+  --atman-color-border-subtle: #2D2D2D;
+  --atman-color-text: #F5F5F5;
+  --atman-color-text-secondary: #BDBDBD;
+  --atman-color-text-tertiary: #9E9E9E;
+  --atman-color-text-inverse: #212121;
+  --atman-color-text-on-primary: #000000;
+
+  /* Shadows - softer for dark mode */
+  --atman-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --atman-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --atman-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+  --atman-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+
+  /* Focus */
+  --atman-focus-ring-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ===== System Preference Dark Mode ===== */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not(.atman-light) {
+    /* Primary (White for dark mode) */
+    --atman-color-primary: #FFFFFF;
+    --atman-color-primary-hover: #E0E0E0;
+    --atman-color-primary-active: #CCCCCC;
+    --atman-color-primary-light: #333333;
+
+    /* Secondary */
+    --atman-color-secondary: #9AA0A6;
+    --atman-color-secondary-hover: #BDC1C6;
+    --atman-color-secondary-active: #E8EAED;
+    --atman-color-secondary-light: #3C4043;
+
+    /* Success */
+    --atman-color-success: #81C995;
+    --atman-color-success-hover: #A8DAB5;
+    --atman-color-success-active: #CEEAD6;
+    --atman-color-success-light: #1E3A29;
+
+    /* Warning */
+    --atman-color-warning: #FDD663;
+    --atman-color-warning-hover: #FDE293;
+    --atman-color-warning-active: #FEEFC3;
+    --atman-color-warning-light: #3D3523;
+
+    /* Destructive */
+    --atman-color-destructive: #F28B82;
+    --atman-color-destructive-hover: #F5ABA4;
+    --atman-color-destructive-active: #F8CBC6;
+    --atman-color-destructive-light: #4A2623;
+
+    /* Neutral */
+    --atman-color-neutral-50: #212121;
+    --atman-color-neutral-100: #303030;
+    --atman-color-neutral-200: #424242;
+    --atman-color-neutral-300: #4A4A4A;
+    --atman-color-neutral-400: #616161;
+    --atman-color-neutral-500: #757575;
+    --atman-color-neutral-600: #9E9E9E;
+    --atman-color-neutral-700: #BDBDBD;
+    --atman-color-neutral-800: #E0E0E0;
+    --atman-color-neutral-900: #F5F5F5;
+
+    /* Semantic Colors */
+    --atman-color-background: #121212;
+    --atman-color-background-subtle: #1E1E1E;
+    --atman-color-surface: #1E1E1E;
+    --atman-color-surface-hover: #2D2D2D;
+    --atman-color-border: #3C3C3C;
+    --atman-color-border-subtle: #2D2D2D;
+    --atman-color-text: #F5F5F5;
+    --atman-color-text-secondary: #BDBDBD;
+    --atman-color-text-tertiary: #9E9E9E;
+    --atman-color-text-inverse: #212121;
+    --atman-color-text-on-primary: #000000;
+
+    /* Shadows */
+    --atman-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --atman-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+    --atman-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+    --atman-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+
+    /* Focus */
+    --atman-focus-ring-color: rgba(255, 255, 255, 0.4);
+  }
+}

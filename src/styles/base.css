@@ -1,0 +1,258 @@
+/**
+ * Atman Design System - Base Styles
+ * CSS Reset, Typography, and Global Styles
+ */
+
+/* ===== CSS Reset ===== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+body {
+  font-family: var(--atman-font-family);
+  font-size: var(--atman-font-size-md);
+  font-weight: var(--atman-font-weight-regular);
+  line-height: var(--atman-line-height-normal);
+  color: var(--atman-color-text);
+  background-color: var(--atman-color-background);
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+a {
+  color: var(--atman-color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ===== Typography ===== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--atman-font-weight-semibold);
+  line-height: var(--atman-line-height-tight);
+  color: var(--atman-color-text);
+}
+
+h1 {
+  font-size: var(--atman-font-size-4xl);
+}
+
+h2 {
+  font-size: var(--atman-font-size-3xl);
+}
+
+h3 {
+  font-size: var(--atman-font-size-2xl);
+}
+
+h4 {
+  font-size: var(--atman-font-size-xl);
+}
+
+h5 {
+  font-size: var(--atman-font-size-lg);
+}
+
+h6 {
+  font-size: var(--atman-font-size-md);
+}
+
+p {
+  line-height: var(--atman-line-height-normal);
+}
+
+small {
+  font-size: var(--atman-font-size-sm);
+}
+
+strong,
+b {
+  font-weight: var(--atman-font-weight-semibold);
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--atman-font-family-mono);
+  font-size: var(--atman-font-size-sm);
+}
+
+code {
+  padding: var(--atman-space-1) var(--atman-space-2);
+  background-color: var(--atman-color-neutral-100);
+  border-radius: var(--atman-radius-sm);
+}
+
+pre {
+  padding: var(--atman-space-4);
+  background-color: var(--atman-color-neutral-100);
+  border-radius: var(--atman-radius-md);
+  overflow-x: auto;
+}
+
+pre code {
+  padding: 0;
+  background-color: transparent;
+}
+
+/* ===== Focus Styles ===== */
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: var(--atman-focus-ring-width) solid var(--atman-focus-ring-color);
+  outline-offset: var(--atman-focus-ring-offset);
+}
+
+/* Custom focus ring for components */
+.atman-focus-ring:focus-visible {
+  box-shadow: 0 0 0 var(--atman-focus-ring-offset) var(--atman-color-background),
+    0 0 0 calc(var(--atman-focus-ring-offset) + var(--atman-focus-ring-width)) var(--atman-focus-ring-color);
+  outline: none;
+}
+
+/* Skip link for accessibility */
+.atman-skip-link {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--atman-space-2) var(--atman-space-4);
+  background-color: var(--atman-color-primary);
+  color: var(--atman-color-text-on-primary);
+  border-radius: var(--atman-radius-md);
+  z-index: var(--atman-z-toast);
+  transition: top var(--atman-duration-fast) var(--atman-easing-default);
+}
+
+.atman-skip-link:focus {
+  top: var(--atman-space-2);
+}
+
+/* ===== Reduced Motion ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===== Selection ===== */
+
+::selection {
+  background-color: var(--atman-color-primary-light);
+  color: var(--atman-color-text);
+}
+
+/* ===== Scrollbar (optional styling) ===== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--atman-color-neutral-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--atman-color-neutral-400);
+  border-radius: var(--atman-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--atman-color-neutral-500);
+}
+
+/* ===== Utility Classes ===== */
+
+.atman-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.atman-not-sr-only {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}

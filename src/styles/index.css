@@ -1,0 +1,8 @@
+/**
+ * Atman Design System - All Styles
+ * Import this file to get all tokens and base styles
+ */
+
+@import './fonts.css';
+@import '../tokens/index.css';
+@import './base.css';
