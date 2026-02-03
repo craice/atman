@@ -77,6 +77,14 @@ export class AtmanTab extends LitElement {
   @property({ type: String })
   value = '';
 
+  /** Internal ID for accessibility relationships */
+  @property({ type: String, attribute: false })
+  tabId = '';
+
+  /** Internal panel ID for aria-controls */
+  @property({ type: String, attribute: false })
+  panelId = '';
+
   render() {
     const tabClasses = {
       tab: true,
@@ -87,7 +95,9 @@ export class AtmanTab extends LitElement {
       <button
         class=${classMap(tabClasses)}
         role="tab"
+        id=${this.tabId || nothing}
         aria-selected=${this.selected}
+        aria-controls=${this.panelId || nothing}
         ?disabled=${this.disabled}
         tabindex=${this.selected ? '0' : '-1'}
       >
@@ -128,6 +138,14 @@ export class AtmanTabPanel extends LitElement {
   @property({ type: String })
   value = '';
 
+  /** Internal ID for accessibility relationships */
+  @property({ type: String, attribute: false })
+  panelId = '';
+
+  /** Internal tab ID for aria-labelledby */
+  @property({ type: String, attribute: false })
+  tabId = '';
+
   updated(changedProperties: Map<string, unknown>) {
     if (changedProperties.has('active')) {
       this.hidden = !this.active;
@@ -136,7 +154,13 @@ export class AtmanTabPanel extends LitElement {
 
   render() {
     return html`
-      <div class="panel" role="tabpanel" tabindex="0">
+      <div
+        class="panel"
+        role="tabpanel"
+        id=${this.panelId || nothing}
+        aria-labelledby=${this.tabId || nothing}
+        tabindex="0"
+      >
         <slot></slot>
       </div>
     `;
@@ -192,6 +216,8 @@ export class AtmanTabs extends LitElement {
   @queryAssignedElements({ selector: 'atman-tab-panel' })
   private panels!: AtmanTabPanel[];
 
+  private tabsId = `atman-tabs-${Math.random().toString(36).slice(2, 9)}`;
+
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener('click', this.handleClick);
@@ -226,14 +252,22 @@ export class AtmanTabs extends LitElement {
   }
 
   private updateSelection() {
-    // Update tabs
-    this.tabs?.forEach((tab) => {
+    // Update tabs and set accessibility IDs
+    this.tabs?.forEach((tab, index) => {
+      const tabId = `${this.tabsId}-tab-${index}`;
+      const panelId = `${this.tabsId}-panel-${index}`;
       tab.selected = tab.value === this.value;
+      tab.tabId = tabId;
+      tab.panelId = panelId;
     });
 
-    // Update panels
-    this.panels?.forEach((panel) => {
+    // Update panels and set accessibility IDs
+    this.panels?.forEach((panel, index) => {
+      const tabId = `${this.tabsId}-tab-${index}`;
+      const panelId = `${this.tabsId}-panel-${index}`;
       panel.active = panel.value === this.value;
+      panel.panelId = panelId;
+      panel.tabId = tabId;
     });
   }
 

@@ -197,6 +197,7 @@ export class AtmanModal extends LitElement {
   @query('.modal')
   private modalEl!: HTMLDivElement;
 
+  private modalId = `atman-modal-${Math.random().toString(36).slice(2, 9)}`;
   private previousActiveElement: HTMLElement | null = null;
   private focusableElements: HTMLElement[] = [];
 
@@ -362,11 +363,11 @@ export class AtmanModal extends LitElement {
           class=${classMap(modalClasses)}
           role="dialog"
           aria-modal="true"
-          aria-labelledby="modal-title"
+          aria-labelledby="${this.modalId}-title"
           tabindex="-1"
         >
           <div part="header" class="header">
-            <div class="header-content" id="modal-title">
+            <div class="header-content" id="${this.modalId}-title">
               ${this.modalTitle || html`<slot name="header"></slot>`}
             </div>
             ${this.showClose

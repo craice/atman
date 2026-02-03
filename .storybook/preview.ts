@@ -13,12 +13,7 @@ const preview: Preview = {
       },
       expanded: true,
     },
-    backgrounds: {
-      options: {
-        light: { name: 'light', value: '#FAFAFA' },
-        dark: { name: 'dark', value: '#212121' }
-      }
-    },
+    backgrounds: { disable: true }, // Disable backgrounds addon - theme controls it
     viewport: {
       options: {
         mobile: {
@@ -80,7 +75,6 @@ const preview: Preview = {
   globalTypes: {
     theme: {
       description: 'Global theme for components',
-      defaultValue: 'light',
       toolbar: {
         title: 'Theme',
         icon: 'paintbrush',
@@ -93,31 +87,22 @@ const preview: Preview = {
     },
   },
 
+  initialGlobals: {
+    theme: 'light',
+  },
+
   decorators: [
     (story, context) => {
       const theme = context.globals.theme || 'light';
       document.documentElement.setAttribute('data-theme', theme);
 
-      // Also update background based on theme
-      if (theme === 'dark') {
-        document.body.style.backgroundColor = '#212121';
-      } else {
-        document.body.style.backgroundColor = '#FAFAFA';
-      }
-
       return html`
-        <div style="padding: 1rem;">
+        <div style="padding: 2rem; box-sizing: border-box; background-color: var(--atman-color-background-subtle);">
           ${story()}
         </div>
       `;
     },
   ],
-
-  initialGlobals: {
-    backgrounds: {
-      value: 'light'
-    }
-  }
 };
 
 export default preview;

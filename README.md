@@ -23,13 +23,15 @@
   <a href="https://craice.github.io/atman">
     <img src="https://img.shields.io/badge/docs-storybook-ff4785?style=flat-square" alt="Storybook" />
   </a>
+  <img src="https://img.shields.io/badge/WCAG-AA-green?style=flat-square" alt="WCAG AA" />
 </p>
 
 <p align="center">
-  <a href="#installation">Installation</a> • 
-  <a href="#quick-start">Quick Start</a> • 
-  <a href="#components">Components</a> • 
-  <a href="#theming">Theming</a> • 
+  <a href="#installation">Installation</a> •
+  <a href="#quick-start">Quick Start</a> •
+  <a href="#components">Components</a> •
+  <a href="#theming">Theming</a> •
+  <a href="#accessibility">Accessibility</a> •
   <a href="#documentation">Documentation</a>
 </p>
 
@@ -220,6 +222,29 @@ document.documentElement.setAttribute('data-theme', 'dark');
 | **Shadows** | sm, md, lg, xl |
 | **Transitions** | fast (150ms), normal (200ms), slow (300ms) |
 
+## Accessibility
+
+Atman is built with WCAG AA compliance as a baseline. Every component includes:
+
+- **Keyboard navigation** — Full keyboard support for all interactive elements
+- **Screen reader support** — Proper ARIA attributes, roles, and live regions
+- **Focus management** — Visible focus indicators, focus trapping in modals
+- **Color contrast** — All text and UI elements meet minimum contrast ratios
+- **Reduced motion** — Animations respect `prefers-reduced-motion`
+
+See the [Accessibility documentation](https://craice.github.io/atman/?path=/story/accessibility) in Storybook for per-component details and testing checklists.
+
+## Figma Integration
+
+Atman tokens can be synced with Figma using the [Tokens Studio](https://tokens.studio/) plugin:
+
+```bash
+# Generate Tokens Studio compatible JSON
+npm run export-tokens-studio
+```
+
+This creates `src/tokens/tokens-studio.json` with three token sets (`global`, `light`, `dark`) ready to import into Figma. See the [Figma Integration Guide](docs/figma-tokens-studio-guide.md) for setup instructions.
+
 ## Browser Support
 
 Atman supports all modern browsers (last 2 versions):
@@ -232,6 +257,8 @@ Atman supports all modern browsers (last 2 versions):
 ## Documentation
 
 - **[Storybook](https://craice.github.io/atman)** — Interactive component documentation
+- **[Figma Integration](docs/figma-tokens-studio-guide.md)** — Tokens Studio setup guide
+- **[Accessibility](docs/accessibility-audit.md)** — Accessibility audit and compliance details
 - **[GitHub](https://github.com/craice/atman)** — Source code and issues
 
 ## Development
@@ -251,6 +278,9 @@ npm run typecheck
 
 # Build Storybook for deployment
 npm run build-storybook
+
+# Export tokens for Figma (Tokens Studio format)
+npm run export-tokens-studio
 ```
 
 ## Contributing

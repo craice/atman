@@ -11,6 +11,9 @@ node_modules/
 dist/
 *.tsbuildinfo
 
+# Generated tokens (auto-generated from tokens.json)
+src/tokens/tokens-studio.json
+
 # Storybook
 storybook-static/
 

@@ -304,6 +304,7 @@ export class AtmanInput extends LitElement {
             ?disabled=${this.disabled}
             ?required=${this.required}
             ?readonly=${this.readonly}
+            aria-required=${this.required ? 'true' : nothing}
             min=${ifDefined(this.min)}
             max=${ifDefined(this.max)}
             minlength=${ifDefined(this.minlength)}

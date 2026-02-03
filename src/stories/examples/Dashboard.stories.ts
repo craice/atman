@@ -22,7 +22,6 @@ export const Dashboard: Story = {
       .dashboard {
         font-family: var(--atman-font-family, 'Geist', sans-serif);
         background: var(--atman-color-background, #FAFAFA);
-        min-height: 100vh;
         padding: 32px;
       }
 

@@ -122,6 +122,10 @@ export class AtmanCard extends LitElement {
   @property({ type: String, reflect: true })
   padding: 'none' | 'sm' | 'md' | 'lg' = 'md';
 
+  /** Accessible label for clickable cards (required when clickable) */
+  @property({ type: String })
+  label?: string;
+
   private handleClick(e: MouseEvent) {
     if (!this.clickable) return;
 
@@ -161,6 +165,7 @@ export class AtmanCard extends LitElement {
         class=${classMap(cardClasses)}
         role=${this.clickable ? 'button' : nothing}
         tabindex=${this.clickable ? '0' : nothing}
+        aria-label=${this.clickable && this.label ? this.label : nothing}
         @click=${this.handleClick}
         @keydown=${this.handleKeydown}
       >

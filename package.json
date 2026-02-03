@@ -36,6 +36,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "export-tokens": "node scripts/export-tokens.js",
+    "export-tokens-studio": "node scripts/generate-tokens-studio.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "changelog:all": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "release": "standard-version",

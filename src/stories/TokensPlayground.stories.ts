@@ -24,7 +24,6 @@ export const CardBuilder: Story = {
         font-family: var(--atman-font-family, 'Geist', sans-serif);
         display: grid;
         grid-template-columns: 350px 1fr;
-        min-height: 100vh;
       }
 
       .playground-controls {
@@ -482,7 +481,6 @@ export const ButtonBuilder: Story = {
         font-family: var(--atman-font-family, 'Geist', sans-serif);
         display: grid;
         grid-template-columns: 320px 1fr;
-        min-height: 100vh;
       }
 
       .btn-controls {

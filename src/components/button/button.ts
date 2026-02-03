@@ -222,6 +222,19 @@ export class AtmanButton extends LitElement {
         animation: none;
       }
     }
+
+    /* Visually hidden for screen readers */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
   `;
 
   /** The variant style of the button */
@@ -251,6 +264,18 @@ export class AtmanButton extends LitElement {
   /** Optional label for accessibility */
   @property({ type: String, attribute: 'label' })
   label?: string;
+
+  updated(changedProperties: Map<string, unknown>) {
+    // Warn developers about icon-only buttons without labels
+    if (changedProperties.has('iconOnly') || changedProperties.has('label')) {
+      if (this.iconOnly && !this.label) {
+        console.warn(
+          '[atman-button] Icon-only buttons require a "label" prop for accessibility.',
+          this
+        );
+      }
+    }
+  }
 
   private handleClick(e: MouseEvent) {
     if (this.disabled || this.loading) {
@@ -294,6 +319,9 @@ export class AtmanButton extends LitElement {
           <slot></slot>
         </span>
         <slot name="suffix"></slot>
+        <span class="sr-only" aria-live="polite">
+          ${this.loading ? 'Loading' : ''}
+        </span>
       </button>
     `;
   }

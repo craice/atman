@@ -491,6 +491,7 @@ export class AtmanSelect extends LitElement {
           aria-labelledby="${this.label ? `${this.selectId}-label` : nothing}"
           aria-describedby=${hasError ? errorId : this.helperText ? helperId : nothing}
           aria-invalid=${hasError ? 'true' : nothing}
+          aria-activedescendant=${this.isOpen && this.focusedIndex >= 0 ? `${this.selectId}-option-${this.focusedIndex}` : nothing}
           @click=${this.toggle}
           @keydown=${this.handleTriggerKeydown}
         >
@@ -521,9 +522,9 @@ export class AtmanSelect extends LitElement {
                   'option--disabled': !!option.disabled,
                 })}
                 role="option"
+                id="${this.selectId}-option-${index}"
                 aria-selected=${option.value === this.value}
                 aria-disabled=${option.disabled ? 'true' : nothing}
-                tabindex=${option.disabled ? nothing : '0'}
                 @click=${() => this.selectOption(option)}
               >
                 <svg class="option__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

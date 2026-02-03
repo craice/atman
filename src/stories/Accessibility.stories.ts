@@ -274,16 +274,19 @@ export const Accessibility: Story = {
         <ul class="a11y-checklist">
           <li>Use descriptive labels that explain the action</li>
           <li>Icon-only buttons require <code>label</code> prop for screen readers</li>
+          <li>Console warning shown if <code>icon-only</code> is used without <code>label</code></li>
           <li>Disabled buttons use <code>aria-disabled</code> for assistive tech</li>
           <li>Loading state sets <code>aria-busy="true"</code></li>
+          <li>Live region announces "Loading" state changes to screen readers</li>
         </ul>
 
         <h3 class="a11y-component-title">Input</h3>
         <ul class="a11y-checklist">
           <li>Labels are automatically linked via <code>for</code> attribute</li>
           <li>Error messages use <code>role="alert"</code> and <code>aria-describedby</code></li>
-          <li>Required fields show visual indicator and set <code>required</code> attribute</li>
+          <li>Required fields show visual indicator and set <code>required</code> and <code>aria-required</code></li>
           <li>Invalid state sets <code>aria-invalid="true"</code></li>
+          <li>Unique IDs generated for each instance</li>
         </ul>
 
         <h3 class="a11y-component-title">Select</h3>
@@ -291,6 +294,7 @@ export const Accessibility: Story = {
           <li>Trigger uses <code>aria-haspopup="listbox"</code> and <code>aria-expanded</code></li>
           <li>Dropdown has <code>role="listbox"</code> with proper <code>aria-labelledby</code></li>
           <li>Options use <code>role="option"</code> with <code>aria-selected</code></li>
+          <li><code>aria-activedescendant</code> indicates the currently focused option</li>
           <li>Full keyboard navigation: Arrow keys, Enter, Escape, Home, End</li>
         </ul>
 
@@ -312,7 +316,9 @@ export const Accessibility: Story = {
 
         <h3 class="a11y-component-title">Toast</h3>
         <ul class="a11y-checklist">
-          <li>Uses <code>role="alert"</code> and <code>aria-live="polite"</code></li>
+          <li>Uses <code>role="alert"</code> for screen reader announcement</li>
+          <li>Error toasts use <code>aria-live="assertive"</code> for immediate announcement</li>
+          <li>Other toasts use <code>aria-live="polite"</code></li>
           <li>Auto-dismiss pauses on hover/focus</li>
           <li>Close button always visible and keyboard accessible</li>
           <li>Action buttons are properly labeled</li>
@@ -324,14 +330,17 @@ export const Accessibility: Story = {
           <li>Focus returns to trigger element on close</li>
           <li>Uses <code>role="dialog"</code> and <code>aria-modal="true"</code></li>
           <li>Escape key closes the modal (configurable)</li>
-          <li>Title linked via <code>aria-labelledby</code></li>
+          <li>Title linked via <code>aria-labelledby</code> with unique ID per instance</li>
+          <li>Body scroll is prevented when modal is open</li>
         </ul>
 
         <h3 class="a11y-component-title">Tabs</h3>
         <ul class="a11y-checklist">
           <li>Tab list uses <code>role="tablist"</code></li>
           <li>Individual tabs use <code>role="tab"</code> with <code>aria-selected</code></li>
-          <li>Panels use <code>role="tabpanel"</code></li>
+          <li>Tabs have <code>aria-controls</code> pointing to their panel</li>
+          <li>Panels use <code>role="tabpanel"</code> with <code>aria-labelledby</code></li>
+          <li>Unique IDs auto-generated for proper ARIA relationships</li>
           <li>Arrow keys navigate between tabs, Tab moves to panel</li>
           <li>Home/End keys jump to first/last tab</li>
         </ul>
@@ -341,6 +350,7 @@ export const Accessibility: Story = {
           <li>Uses <code>role="tooltip"</code></li>
           <li>Trigger linked via <code>aria-describedby</code> when visible</li>
           <li>Appears on both hover and focus for keyboard users</li>
+          <li>Multiline tooltips (>50 chars) are hoverable for reading</li>
           <li>Configurable show/hide delays</li>
         </ul>
 
@@ -349,6 +359,21 @@ export const Accessibility: Story = {
           <li>Uses <code>role="separator"</code></li>
           <li>Orientation communicated via <code>aria-orientation</code></li>
           <li>Decorative dividers don't interrupt screen reader flow</li>
+        </ul>
+
+        <h3 class="a11y-component-title">Badge</h3>
+        <ul class="a11y-checklist">
+          <li>All badges have <code>role="status"</code> for screen reader announcement</li>
+          <li>Dot variant requires <code>label</code> prop for accessible description</li>
+          <li>Defaults to variant name (e.g., "success status") if no label provided</li>
+        </ul>
+
+        <h3 class="a11y-component-title">Card</h3>
+        <ul class="a11y-checklist">
+          <li>Clickable cards use <code>role="button"</code> and <code>tabindex="0"</code></li>
+          <li>Clickable cards require <code>label</code> prop for <code>aria-label</code></li>
+          <li>Keyboard support: Enter and Space to activate</li>
+          <li>Focus-visible styling for keyboard navigation</li>
         </ul>
 
         <h3 class="a11y-component-title">Avatar & Icon</h3>
@@ -411,6 +436,86 @@ export const Accessibility: Story = {
           <p class="a11y-warning-title">Important</p>
           <p>Automated tools catch only 30-40% of accessibility issues. Manual testing is essential for a truly accessible experience.</p>
         </div>
+      </div>
+
+      <div class="a11y-section">
+        <h2 class="a11y-section-title">Testing Checklist</h2>
+        <p>Use this checklist when testing components for accessibility:</p>
+
+        <h3 class="a11y-component-title">Keyboard Navigation</h3>
+        <ul class="a11y-checklist">
+          <li>Can reach all interactive elements with Tab key</li>
+          <li>Focus indicator is clearly visible</li>
+          <li>Focus order follows logical reading order</li>
+          <li>Enter/Space activates buttons, links, and controls</li>
+          <li>Escape closes modals, dropdowns, and tooltips</li>
+          <li>Arrow keys work in lists, tabs, and radio groups</li>
+          <li>No keyboard traps (except intentional focus traps in modals)</li>
+        </ul>
+
+        <h3 class="a11y-component-title">Screen Reader</h3>
+        <ul class="a11y-checklist">
+          <li>All images have alt text or are marked decorative</li>
+          <li>Form fields have associated labels</li>
+          <li>Error messages are announced</li>
+          <li>State changes are announced (loading, selected, expanded)</li>
+          <li>Headings follow proper hierarchy</li>
+          <li>Links and buttons have descriptive text</li>
+        </ul>
+
+        <h3 class="a11y-component-title">Visual</h3>
+        <ul class="a11y-checklist">
+          <li>Text contrast meets 4.5:1 minimum ratio</li>
+          <li>UI components meet 3:1 minimum ratio</li>
+          <li>Focus indicators meet 3:1 contrast ratio</li>
+          <li>Information not conveyed by color alone</li>
+          <li>Content readable at 200% zoom</li>
+          <li>Animations respect reduced motion preference</li>
+        </ul>
+
+        <h3 class="a11y-component-title">Component-Specific</h3>
+        <table class="a11y-table">
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th>Key Tests</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Button</td>
+              <td>Enter/Space activates; loading state announced</td>
+            </tr>
+            <tr>
+              <td>Input</td>
+              <td>Label clickable; error announced; required indicated</td>
+            </tr>
+            <tr>
+              <td>Select</td>
+              <td>Arrow navigation; Escape closes; selection announced</td>
+            </tr>
+            <tr>
+              <td>Checkbox/Radio</td>
+              <td>Space toggles; state announced; grouped properly</td>
+            </tr>
+            <tr>
+              <td>Modal</td>
+              <td>Focus trapped; Escape closes; focus returns on close</td>
+            </tr>
+            <tr>
+              <td>Tabs</td>
+              <td>Arrow navigation; Tab to panel; selection announced</td>
+            </tr>
+            <tr>
+              <td>Toast</td>
+              <td>Auto-announced; dismissible; pauses on hover</td>
+            </tr>
+            <tr>
+              <td>Tooltip</td>
+              <td>Shows on focus; content readable; not required info</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <div class="a11y-section">

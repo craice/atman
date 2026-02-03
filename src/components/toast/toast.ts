@@ -339,7 +339,7 @@ export class AtmanToast extends LitElement {
         part="toast"
         class=${classMap(toastClasses)}
         role="alert"
-        aria-live="polite"
+        aria-live=${this.variant === 'error' ? 'assertive' : 'polite'}
         @mouseenter=${this.handleMouseEnter}
         @mouseleave=${this.handleMouseLeave}
       >

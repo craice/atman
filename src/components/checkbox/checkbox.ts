@@ -169,21 +169,6 @@ export class AtmanCheckbox extends LitElement {
     );
   }
 
-  private handleClick() {
-    if (this.disabled) return;
-
-    this.checked = !this.checked;
-    this.indeterminate = false;
-
-    this.dispatchEvent(
-      new CustomEvent('atman-change', {
-        bubbles: true,
-        composed: true,
-        detail: { checked: this.checked, value: this.value },
-      })
-    );
-  }
-
   private renderCheckIcon() {
     return html`
       <svg class="control__icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
@@ -214,7 +199,7 @@ export class AtmanCheckbox extends LitElement {
     };
 
     return html`
-      <label part="checkbox" class=${classMap(checkboxClasses)} @click=${(e: Event) => e.preventDefault()}>
+      <label part="checkbox" class=${classMap(checkboxClasses)}>
         <input
           part="input"
           class="input"
@@ -232,7 +217,6 @@ export class AtmanCheckbox extends LitElement {
         <span
           part="control"
           class=${classMap(controlClasses)}
-          @click=${this.handleClick}
           aria-hidden="true"
         >
           ${this.indeterminate ? this.renderIndeterminateIcon() : this.renderCheckIcon()}

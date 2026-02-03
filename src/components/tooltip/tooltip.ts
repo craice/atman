@@ -54,6 +54,7 @@ export class AtmanTooltip extends LitElement {
       white-space: normal;
       max-width: 250px;
       text-align: center;
+      pointer-events: auto;
     }
 
     /* Arrow */
@@ -218,6 +219,8 @@ export class AtmanTooltip extends LitElement {
         id=${this.tooltipId}
         role="tooltip"
         aria-hidden=${!this.isVisible}
+        @mouseenter=${this.content.length > 50 ? this.show : nothing}
+        @mouseleave=${this.content.length > 50 ? this.hide : nothing}
       >
         <span part="content">${this.content}</span>
         ${this.arrow ? html`<span part="arrow" class="arrow"></span>` : nothing}

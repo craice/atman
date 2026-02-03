@@ -166,20 +166,6 @@ export class AtmanRadio extends LitElement {
     }
   }
 
-  private handleClick() {
-    if (this.disabled || this.checked) return;
-
-    this.checked = true;
-
-    this.dispatchEvent(
-      new CustomEvent('atman-change', {
-        bubbles: true,
-        composed: true,
-        detail: { value: this.value },
-      })
-    );
-  }
-
   render() {
     const radioClasses = {
       radio: true,
@@ -193,7 +179,7 @@ export class AtmanRadio extends LitElement {
     };
 
     return html`
-      <label part="radio" class=${classMap(radioClasses)} @click=${(e: Event) => e.preventDefault()}>
+      <label part="radio" class=${classMap(radioClasses)}>
         <input
           part="input"
           class="input"
@@ -209,7 +195,6 @@ export class AtmanRadio extends LitElement {
         <span
           part="control"
           class=${classMap(controlClasses)}
-          @click=${this.handleClick}
           aria-hidden="true"
         >
           <span class="control__dot"></span>

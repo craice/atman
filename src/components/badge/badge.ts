@@ -131,6 +131,10 @@ export class AtmanBadge extends LitElement {
   @property({ type: Boolean, reflect: true })
   dot = false;
 
+  /** Accessible label for the badge (required for dot variant) */
+  @property({ type: String })
+  label?: string;
+
   render() {
     const classes = {
       badge: true,
@@ -141,12 +145,17 @@ export class AtmanBadge extends LitElement {
 
     if (this.dot) {
       return html`
-        <span part="badge" class=${classMap(classes)} role="status"></span>
+        <span
+          part="badge"
+          class=${classMap(classes)}
+          role="status"
+          aria-label=${this.label || `${this.variant} status`}
+        ></span>
       `;
     }
 
     return html`
-      <span part="badge" class=${classMap(classes)}>
+      <span part="badge" class=${classMap(classes)} role="status">
         <slot name="prefix"></slot>
         <slot></slot>
       </span>
