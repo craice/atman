@@ -20,10 +20,16 @@
   <a href="https://github.com/craice/atman/actions">
     <img src="https://img.shields.io/github/actions/workflow/status/craice/atman/ci.yml?style=flat-square" alt="Build Status" />
   </a>
-  <a href="https://craice.github.io/atman">
+  <a href="https://craice.github.io/atman/storybook/">
     <img src="https://img.shields.io/badge/docs-storybook-ff4785?style=flat-square" alt="Storybook" />
   </a>
+  <a href="https://craice.github.io/atman">
+    <img src="https://img.shields.io/badge/site-landing%20page-000?style=flat-square" alt="Landing Page" />
+  </a>
   <img src="https://img.shields.io/badge/WCAG-AA-green?style=flat-square" alt="WCAG AA" />
+  <a href="https://claude.ai/claude-code">
+    <img src="https://img.shields.io/badge/Built%20with-Claude%20Code-blueviolet?style=flat-square" alt="Built with Claude Code" />
+  </a>
 </p>
 
 <p align="center">
@@ -232,7 +238,7 @@ Atman is built with WCAG AA compliance as a baseline. Every component includes:
 - **Color contrast** — All text and UI elements meet minimum contrast ratios
 - **Reduced motion** — Animations respect `prefers-reduced-motion`
 
-See the [Accessibility documentation](https://craice.github.io/atman/?path=/story/accessibility) in Storybook for per-component details and testing checklists.
+See the [Accessibility documentation](https://craice.github.io/atman/storybook/?path=/story/accessibility) in Storybook for per-component details and testing checklists.
 
 ## Figma Integration
 
@@ -254,11 +260,18 @@ Atman supports all modern browsers (last 2 versions):
 - Safari
 - Edge
 
+## About
+
+Atman was designed and built by **Rafael Craice** using **Claude Code by Anthropic** as a deliberate exercise in **vibe coding** — a development approach where the human provides direction, vision, and quality control while an AI assistant handles implementation details. The entire project was guided by a single project brief ([`atman.md`](atman.md)), and every component, story, and accessibility fix was produced through this human-AI collaboration. [Read the case study](https://craice.github.io/atman/case-study.html).
+
 ## Documentation
 
-- **[Storybook](https://craice.github.io/atman)** — Interactive component documentation
+- **[Landing Page](https://craice.github.io/atman)** — Project overview and showcase
+- **[Storybook](https://craice.github.io/atman/storybook/)** — Interactive component documentation
+- **[Case Study](https://craice.github.io/atman/case-study.html)** — Project overview, design decisions, and learnings
 - **[Figma Integration](docs/figma-tokens-studio-guide.md)** — Tokens Studio setup guide
 - **[Accessibility](docs/accessibility-audit.md)** — Accessibility audit and compliance details
+- **[AI Guide](docs/ai-guide.md)** — Reference for AI assistants working with the codebase
 - **[GitHub](https://github.com/craice/atman)** — Source code and issues
 
 ## Development
@@ -282,6 +295,13 @@ npm run build-storybook
 # Export tokens for Figma (Tokens Studio format)
 npm run export-tokens-studio
 ```
+
+### Vibe Coding Friendly
+
+Atman is built with AI-assisted development (vibe coding) as a first-class workflow. The codebase includes structured onboarding for AI assistants:
+
+- **[`CLAUDE.md`](CLAUDE.md)** — Quick-start conventions and commands for AI sessions
+- **[`docs/ai-guide.md`](docs/ai-guide.md)** — Comprehensive component, token, and architecture reference
 
 ## Contributing
 

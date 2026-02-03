@@ -258,6 +258,16 @@ The release script will:
 3. Create a git tag
 4. Create a release commit
 
+## AI-Assisted Development
+
+Atman embraces **vibe coding** — AI-assisted development powered by **Claude Code by Anthropic**. If you're contributing with an AI assistant, the codebase includes structured onboarding:
+
+- **[`CLAUDE.md`](CLAUDE.md)** — Quick-start entry point with conventions, key references, and common commands
+- **[`docs/ai-guide.md`](docs/ai-guide.md)** — Comprehensive reference covering all 16 components, the design token system, how to add or modify components, and a decision framework
+- **[`atman.md`](atman.md)** — Full project brief, technical specifications, and phase tracker
+
+When using an AI assistant, point it to `CLAUDE.md` first. It will provide the context needed to work effectively within the codebase.
+
 ## Questions?
 
 If you have questions, please open an issue on GitHub.

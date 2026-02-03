@@ -3,6 +3,7 @@ atman.md
 
 # Claude Code local settings
 .claude/
+CLAUDE.md
 
 # Dependencies
 node_modules/
@@ -38,3 +39,9 @@ npm-debug.log*
 
 # Test coverage
 coverage/
+
+# Deploy output
+deploy/
+
+# Landing page build artifacts
+landing/lib/

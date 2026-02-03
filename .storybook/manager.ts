@@ -6,9 +6,9 @@ const atmanTheme = create({
 
   // Brand
   brandTitle: 'Atman Design System',
-  brandUrl: 'https://github.com/craice/atman',
+  brandUrl: 'https://craice.github.io/atman',
   brandImage: './atman-logo-full.svg',
-  brandTarget: '_blank',
+  brandTarget: '_self',
 
   // Colors - Black as primary
   colorPrimary: '#000000',

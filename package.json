@@ -42,7 +42,10 @@
     "release": "standard-version",
     "release:minor": "standard-version --release-as minor",
     "release:major": "standard-version --release-as major",
-    "release:patch": "standard-version --release-as patch"
+    "release:patch": "standard-version --release-as patch",
+    "build-landing": "vite build --config vite.landing.config.ts",
+    "build-deploy": "npm run build-landing && STORYBOOK_BASE=/atman/storybook/ npm run build-storybook && node scripts/assemble-deploy.js",
+    "preview-landing": "npx serve landing"
   },
   "keywords": [
     "design-system",
@@ -52,7 +55,7 @@
     "ui-components",
     "atman"
   ],
-  "author": "",
+  "author": "Rafael Craice",
   "license": "MIT",
   "repository": {
     "type": "git",

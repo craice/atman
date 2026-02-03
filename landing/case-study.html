@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study — Atman Design System</title>
+  <meta name="description" content="How a Product Designer built a complete design system from scratch using AI-assisted development. Project overview, design decisions, technical architecture, and learnings.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Atman Design System — Case Study">
+  <meta property="og:description" content="How a Product Designer built a complete design system from scratch using AI-assisted development.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://craice.github.io/atman/case-study.html">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+
+  <!-- Atman Tokens, Base Styles & Fonts -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="./lib/atman.css">
+
+  <!-- Landing Page Styles -->
+  <link rel="stylesheet" href="./css/landing.css">
+
+  <!-- Case Study specific styles -->
+  <style>
+    .case-study {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: calc(64px + var(--atman-space-8)) var(--atman-space-4) var(--atman-space-9);
+    }
+
+    @media (min-width: 768px) {
+      .case-study {
+        padding-left: var(--atman-space-6);
+        padding-right: var(--atman-space-6);
+      }
+    }
+
+    .case-study-header {
+      margin-bottom: var(--atman-space-8);
+    }
+
+    .case-study-header h1 {
+      font-size: var(--atman-font-size-3xl);
+      margin-bottom: var(--atman-space-3);
+    }
+
+    @media (min-width: 768px) {
+      .case-study-header h1 {
+        font-size: var(--atman-font-size-4xl);
+      }
+    }
+
+    .case-study-meta {
+      font-size: var(--atman-font-size-sm);
+      color: var(--atman-color-text-tertiary);
+    }
+
+    .case-study h2 {
+      font-size: var(--atman-font-size-2xl);
+      margin-top: var(--atman-space-8);
+      margin-bottom: var(--atman-space-4);
+      padding-top: var(--atman-space-4);
+      border-top: 1px solid var(--atman-color-border-subtle);
+    }
+
+    .case-study h3 {
+      font-size: var(--atman-font-size-xl);
+      margin-top: var(--atman-space-5);
+      margin-bottom: var(--atman-space-3);
+    }
+
+    .case-study p {
+      color: var(--atman-color-text-secondary);
+      line-height: var(--atman-line-height-relaxed);
+      margin-bottom: var(--atman-space-4);
+    }
+
+    .case-study ul, .case-study ol {
+      color: var(--atman-color-text-secondary);
+      line-height: var(--atman-line-height-relaxed);
+      margin-bottom: var(--atman-space-4);
+      padding-left: var(--atman-space-5);
+    }
+
+    .case-study li {
+      list-style-type: disc;
+      margin-bottom: var(--atman-space-2);
+    }
+
+    .case-study ol li {
+      list-style-type: decimal;
+    }
+
+    .case-study strong {
+      color: var(--atman-color-text);
+    }
+
+    .case-study blockquote {
+      border-left: 3px solid var(--atman-color-primary);
+      padding: var(--atman-space-3) var(--atman-space-4);
+      margin: var(--atman-space-4) 0;
+      background-color: var(--atman-color-background-subtle);
+      border-radius: 0 var(--atman-radius-md) var(--atman-radius-md) 0;
+    }
+
+    .case-study blockquote p {
+      margin-bottom: 0;
+      font-style: italic;
+    }
+
+    .tech-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: var(--atman-space-4);
+      font-size: var(--atman-font-size-sm);
+    }
+
+    .tech-table th,
+    .tech-table td {
+      text-align: left;
+      padding: var(--atman-space-2) var(--atman-space-3);
+      border-bottom: 1px solid var(--atman-color-border-subtle);
+    }
+
+    .tech-table th {
+      font-weight: var(--atman-font-weight-semibold);
+      color: var(--atman-color-text);
+    }
+
+    .tech-table td {
+      color: var(--atman-color-text-secondary);
+    }
+
+    .phase-list {
+      padding-left: 0;
+    }
+
+    .phase-list li {
+      list-style: none;
+      padding: var(--atman-space-2) 0;
+      border-bottom: 1px solid var(--atman-color-border-subtle);
+      display: flex;
+      justify-content: space-between;
+      gap: var(--atman-space-3);
+    }
+
+    .phase-list .phase-name {
+      color: var(--atman-color-text);
+      font-weight: var(--atman-font-weight-medium);
+    }
+
+    .phase-list .phase-desc {
+      color: var(--atman-color-text-tertiary);
+      text-align: right;
+      font-size: var(--atman-font-size-sm);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--atman-space-2);
+      font-size: var(--atman-font-size-sm);
+      color: var(--atman-color-text-secondary);
+      text-decoration: none;
+      margin-bottom: var(--atman-space-5);
+    }
+
+    .back-link:hover {
+      color: var(--atman-color-text);
+      text-decoration: none;
+    }
+  </style>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R61EEVYHWY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R61EEVYHWY');
+  </script>
+</head>
+<body>
+  <!-- Skip Link -->
+  <a class="atman-skip-link" href="#main">Skip to content</a>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header scrolled">
+    <div class="container header-inner">
+      <a href="./" aria-label="Atman Design System home">
+        <img class="header-logo header-logo-light" src="./assets/atman-logo-light.svg" alt="Atman" height="28">
+        <img class="header-logo header-logo-dark" src="./assets/atman-logo-dark.svg" alt="Atman" height="28">
+      </a>
+
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="./#features">Features</a>
+        <a href="./#components">Components</a>
+        <a href="./#quick-start">Quick Start</a>
+        <a href="./case-study.html" aria-current="page">Case Study</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <a href="./storybook/" class="header-link">Storybook</a>
+        <a href="https://github.com/craice/atman" class="header-link" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main id="main">
+    <article class="case-study">
+
+      <a href="./" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Back to home
+      </a>
+
+      <div class="case-study-header">
+        <h1>Building Atman Design System</h1>
+        <p class="case-study-meta">By Rafael Craice &middot; January 2026 &middot; Case Study</p>
+      </div>
+
+      <!-- ===== Overview ===== -->
+      <h2>Project Overview</h2>
+
+      <p><strong>Atman</strong> (from Sanskrit, meaning "essence" or "soul") is a lean, accessible, and modern Design System built with Web Components. It was created as a portfolio piece to demonstrate the end-to-end development of a design system by a single person with AI assistance.</p>
+
+      <p>The goal was clear: build a production-ready design system that a Product Designer can present as proof of technical depth and design-to-code proficiency. Not a prototype, not a demo &mdash; a real system with real components, real accessibility compliance, and real documentation.</p>
+
+      <blockquote>
+        <p>Essence over excess. Only essential components, no bloat. Every decision must justify its existence.</p>
+      </blockquote>
+
+      <h3>The Author</h3>
+
+      <p>I'm Rafael Craice, a Product Designer with deep frontend experience. Atman represents the intersection of my design practice and technical background, showcasing what's possible when a designer has the skills to build their own design system from scratch.</p>
+
+      <!-- ===== Design Decisions ===== -->
+      <h2>Design Decisions</h2>
+
+      <h3>Philosophy: Essentialism</h3>
+
+      <p>Atman follows a lean philosophy. Where many design systems offer dozens of variants, multiple size options, and extensive configuration, Atman deliberately provides the minimum needed to build functional, beautiful applications:</p>
+
+      <ul>
+        <li><strong>3 sizes</strong> (sm, md, lg) instead of 5+</li>
+        <li><strong>4 button variants</strong> (primary, secondary, ghost, destructive) &mdash; covering all real use cases</li>
+        <li><strong>16 components</strong> for v1 &mdash; carefully selected to support actual application needs</li>
+        <li><strong>Limited color palette</strong> &mdash; primary, secondary, success, warning, destructive, and a neutral scale</li>
+      </ul>
+
+      <h3>Token System</h3>
+
+      <p>The design token system is built on an <strong>8px grid</strong> with a spacing scale of 4, 8, 12, 16, 24, 32, 48, 64, and 96 pixels. Typography uses <strong>Geist</strong>, Vercel's open-source font family, chosen for its excellent readability and modern aesthetic.</p>
+
+      <p>All tokens are implemented as CSS Custom Properties (<code>--atman-*</code>), enabling runtime theming and framework-agnostic consumption. The system includes 300+ tokens covering colors, spacing, typography, shadows, border radius, transitions, z-index, and focus styles.</p>
+
+      <h3>Component API Standards</h3>
+
+      <p>Every component follows strict conventions:</p>
+
+      <ul>
+        <li><strong>Naming</strong>: All elements use the <code>atman-</code> prefix (<code>&lt;atman-button&gt;</code>, <code>&lt;atman-input&gt;</code>)</li>
+        <li><strong>Events</strong>: Custom events prefixed with <code>atman-</code> and dispatched with <code>bubbles: true, composed: true</code></li>
+        <li><strong>Slots</strong>: Default slot for main content, named slots for specific areas</li>
+        <li><strong>CSS Parts</strong>: All components expose <code>::part()</code> for external styling</li>
+        <li><strong>Types</strong>: Exported TypeScript types for all properties and events</li>
+      </ul>
+
+      <!-- ===== Technical Architecture ===== -->
+      <h2>Technical Architecture</h2>
+
+      <table class="tech-table">
+        <thead>
+          <tr>
+            <th>Layer</th>
+            <th>Technology</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Components</td>
+            <td>Lit 3</td>
+            <td>Web Components framework</td>
+          </tr>
+          <tr>
+            <td>Icons</td>
+            <td>Lucide</td>
+            <td>Icon library</td>
+          </tr>
+          <tr>
+            <td>Language</td>
+            <td>TypeScript</td>
+            <td>Type safety</td>
+          </tr>
+          <tr>
+            <td>Build</td>
+            <td>Vite</td>
+            <td>Bundling and dev server</td>
+          </tr>
+          <tr>
+            <td>Tests</td>
+            <td>Vitest + Happy DOM</td>
+            <td>Unit testing</td>
+          </tr>
+          <tr>
+            <td>Documentation</td>
+            <td>Storybook</td>
+            <td>Interactive docs and examples</td>
+          </tr>
+          <tr>
+            <td>CI/CD</td>
+            <td>GitHub Actions</td>
+            <td>Build, test, deploy</td>
+          </tr>
+          <tr>
+            <td>Design Sync</td>
+            <td>Tokens Studio</td>
+            <td>Figma token integration</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Why Web Components?</h3>
+
+      <p>Web Components were chosen specifically for <strong>framework-agnostic distribution</strong>. A design system that only works with React or Vue limits adoption. Web Components work everywhere &mdash; React, Vue, Angular, Svelte, or plain HTML. They use the platform, not a framework.</p>
+
+      <p><strong>Lit</strong> was selected over raw custom elements for its ergonomic features: reactive properties, efficient DOM updates via lit-html, scoped styles, and TypeScript decorators. The trade-off is a small runtime dependency (~7KB gzipped), which is acceptable for the developer experience gained.</p>
+
+      <h3>Shadow DOM: Encapsulation vs. Flexibility</h3>
+
+      <p>All components use Shadow DOM for style encapsulation. This guarantees components look correct regardless of the host application's CSS. The downside is that external styling requires <code>::part()</code> selectors or CSS Custom Properties, but this is by design &mdash; it prevents accidental style leakage and ensures visual consistency.</p>
+
+      <!-- ===== Accessibility ===== -->
+      <h2>Accessibility Approach</h2>
+
+      <p>Accessibility is not an afterthought in Atman &mdash; it's a <strong>baseline requirement</strong>. Every component was built with WCAG AA compliance from the start, and a full accessibility audit (Phase 7) validated and fixed remaining issues.</p>
+
+      <h3>Key Accessibility Features</h3>
+
+      <ul>
+        <li><strong>Keyboard navigation</strong>: Full keyboard support for all interactive elements. Arrow keys in Select, Tabs, and Radio groups. Focus trap in Modal.</li>
+        <li><strong>Screen reader support</strong>: Proper ARIA attributes, roles, and live regions. Semantic HTML structure.</li>
+        <li><strong>Focus management</strong>: Visible focus indicators using a consistent focus ring system. Focus is trapped in modals and restored on close.</li>
+        <li><strong>Color contrast</strong>: All text and UI elements meet WCAG AA minimum contrast ratios (4.5:1 for text, 3:1 for UI elements).</li>
+        <li><strong>Reduced motion</strong>: All animations respect <code>prefers-reduced-motion</code> via a global media query.</li>
+      </ul>
+
+      <!-- ===== AI-Assisted Development ===== -->
+      <h2>AI-Assisted Development</h2>
+
+      <p>Atman was built using <strong>"vibe coding"</strong> &mdash; a development approach where the human provides direction, vision, and quality control while an AI assistant (Claude Code by Anthropic) handles the implementation details.</p>
+
+      <h3>How It Worked</h3>
+
+      <p>The entire project was guided by a single document that served as the project brief, technical specification, and progress tracker. This document defined:</p>
+
+      <ul>
+        <li>Design philosophy and constraints</li>
+        <li>Component specifications with sizes, variants, and features</li>
+        <li>Technical standards (naming, events, accessibility)</li>
+        <li>Development phases with clear deliverables</li>
+      </ul>
+
+      <p>Each development session followed a pattern: start a phase, let Claude Code implement the components and documentation, review the output, iterate on details, and move to the next phase.</p>
+
+      <h3>What Worked Well</h3>
+
+      <ul>
+        <li><strong>Speed</strong>: 16 components, full Storybook documentation, and accessibility audit completed in a focused development sprint</li>
+        <li><strong>Consistency</strong>: The AI maintained consistent patterns across all components because the conventions were defined upfront</li>
+        <li><strong>Documentation</strong>: Storybook stories were generated alongside components, ensuring documentation stayed in sync</li>
+        <li><strong>Accessibility</strong>: ARIA patterns and keyboard navigation were implemented correctly from the start, with the audit catching edge cases</li>
+      </ul>
+
+      <h3>What Required Human Judgment</h3>
+
+      <ul>
+        <li><strong>Design decisions</strong>: Color choices, spacing scale, component selection &mdash; these required design intuition</li>
+        <li><strong>Quality bar</strong>: Knowing when a component "feels right" in terms of interaction quality</li>
+        <li><strong>Architecture</strong>: High-level decisions about technology stack, project structure, and API conventions</li>
+        <li><strong>Prioritization</strong>: Deciding which 16 components to build for v1 out of dozens of possibilities</li>
+      </ul>
+
+      <!-- ===== Results ===== -->
+      <h2>Results</h2>
+
+      <div class="stats-grid" style="margin-bottom: var(--atman-space-5);">
+        <div class="stat">
+          <div class="stat-value">16</div>
+          <div class="stat-label">Components</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">300+</div>
+          <div class="stat-label">Design Tokens</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">21</div>
+          <div class="stat-label">Storybook Stories</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">10</div>
+          <div class="stat-label">Example Compositions</div>
+        </div>
+      </div>
+
+      <h3>Deliverables</h3>
+
+      <ul>
+        <li><strong>Component library</strong> with 16 production-ready Web Components</li>
+        <li><strong>Design token system</strong> with 300+ CSS Custom Properties, light and dark themes</li>
+        <li><strong>Storybook documentation</strong> with interactive examples, accessibility notes, and code snippets</li>
+        <li><strong>Figma Tokens Studio integration</strong> for design-to-code synchronization</li>
+        <li><strong>Full WCAG AA compliance</strong> verified through accessibility audit</li>
+        <li><strong>GitHub Pages deployment</strong> with CI/CD pipeline</li>
+        <li><strong>TypeScript support</strong> with exported types and IntelliSense</li>
+      </ul>
+
+      <!-- ===== Development Phases ===== -->
+      <h3>Development Phases</h3>
+
+      <ul class="phase-list">
+        <li>
+          <span class="phase-name">Phase 1: Foundation</span>
+          <span class="phase-desc">Repository, tokens, base styles</span>
+        </li>
+        <li>
+          <span class="phase-name">Phase 2: Primitives</span>
+          <span class="phase-desc">Button, Badge, Avatar, Icon</span>
+        </li>
+        <li>
+          <span class="phase-name">Phase 3: Form Controls</span>
+          <span class="phase-desc">Input, Select, Checkbox, Radio</span>
+        </li>
+        <li>
+          <span class="phase-name">Phase 4: Feedback</span>
+          <span class="phase-desc">Alert, Toast, Skeleton, Tooltip</span>
+        </li>
+        <li>
+          <span class="phase-name">Phase 5: Layout</span>
+          <span class="phase-desc">Card, Modal, Tabs, Divider</span>
+        </li>
+        <li>
+          <span class="phase-name">Phase 6: Documentation</span>
+          <span class="phase-desc">Storybook, GitHub Pages, README</span>
+        </li>
+        <li>
+          <span class="phase-name">Phase 7: Accessibility Audit</span>
+          <span class="phase-desc">WCAG AA compliance verification</span>
+        </li>
+        <li>
+          <span class="phase-name">Phase 8: Figma Tokens</span>
+          <span class="phase-desc">Tokens Studio integration</span>
+        </li>
+        <li>
+          <span class="phase-name">Phase 9: Portfolio</span>
+          <span class="phase-desc">Landing page and case study</span>
+        </li>
+      </ul>
+
+      <!-- ===== Learnings ===== -->
+      <h2>Learnings</h2>
+
+      <h3>On Design Systems</h3>
+
+      <p><strong>Start with constraints.</strong> Defining a limited set of sizes, variants, and components upfront made every subsequent decision easier. When in doubt, leave it out &mdash; you can always add later, but removing is painful.</p>
+
+      <p><strong>Tokens are the foundation.</strong> Getting the design token system right early saved enormous effort later. Every component references tokens, so changes propagate consistently. The time invested in the token structure paid dividends throughout the project.</p>
+
+      <h3>On AI-Assisted Development</h3>
+
+      <p><strong>The brief is everything.</strong> The quality of Claude Code's output was directly proportional to the clarity of the project brief. The <code>atman.md</code> document served as both specification and context, enabling the AI to maintain consistency across sessions.</p>
+
+      <p><strong>Human taste is irreplaceable.</strong> AI is excellent at implementing patterns once defined, but the design decisions &mdash; what feels right, what to prioritize, how to balance trade-offs &mdash; still require human judgment and design experience.</p>
+
+      <p><strong>Review is essential.</strong> AI-generated code needs the same code review rigor as human-written code. The accessibility audit (Phase 7) caught issues that were technically correct but suboptimal from a user experience perspective.</p>
+
+      <h3>Future Plans</h3>
+
+      <p>Phase 10 will add 8 additional components: Switch, Progress, Accordion, Breadcrumb, Textarea, Pagination, Dropdown Menu, and Table. The foundation is solid &mdash; adding components now follows well-established patterns.</p>
+
+      <atman-divider spacing="lg"></atman-divider>
+
+      <div style="text-align: center; padding: var(--atman-space-5) 0;">
+        <p style="margin-bottom: var(--atman-space-4);"><strong>Explore the design system</strong></p>
+        <div style="display: flex; justify-content: center; gap: var(--atman-space-3); flex-wrap: wrap;">
+          <atman-button variant="primary" onclick="window.location.href='./storybook/'">View Storybook</atman-button>
+          <atman-button variant="secondary" onclick="window.open('https://github.com/craice/atman','_blank')">GitHub Repository</atman-button>
+        </div>
+      </div>
+
+    </article>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <img class="footer-logo hero-logo-light" src="./assets/atman-logo-light.svg" alt="Atman" height="24">
+      <img class="footer-logo hero-logo-dark" src="./assets/atman-logo-dark.svg" alt="Atman" height="24">
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="./storybook/">Storybook</a>
+        <a href="https://github.com/craice/atman" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.npmjs.com/package/atman-ds" target="_blank" rel="noopener noreferrer">npm</a>
+        <a href="./case-study.html" aria-current="page">Case Study</a>
+      </nav>
+
+      <p class="footer-meta">
+        Designed and built by Rafael Craice &middot; MIT License
+      </p>
+    </div>
+  </footer>
+
+  <!-- Atman Component Library -->
+  <script type="module" src="./lib/atman.js"></script>
+
+  <!-- Landing Page Scripts -->
+  <script src="./js/landing.js"></script>
+</body>
+</html>

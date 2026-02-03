@@ -1,8 +1,6 @@
 import type { Preview } from '@storybook/web-components-vite';
 import { html } from 'lit';
-import '../src/styles/fonts.css';
-import '../src/tokens/index.css';
-import '../src/styles/base.css';
+import '../src/styles/index.css';
 
 const preview: Preview = {
   parameters: {
