@@ -262,7 +262,7 @@ Atman supports all modern browsers (last 2 versions):
 
 ## About
 
-Atman was designed and built by **Rafael Craice** using **Claude Code by Anthropic** as a deliberate exercise in **vibe coding** — a development approach where the human provides direction, vision, and quality control while an AI assistant handles implementation details. The entire project was guided by a single project brief ([`atman.md`](atman.md)), and every component, story, and accessibility fix was produced through this human-AI collaboration. [Read the case study](https://craice.github.io/atman/case-study.html).
+Atman was designed and built by **Rafael Craice** using **Claude Code by Anthropic** in an **AI-assisted development** approach where the human provides direction, vision, and quality control while the AI handles implementation details. The entire project was guided by a single project brief ([`atman.md`](atman.md)), and every component, story, and accessibility fix was produced through this human-AI collaboration. [Read the case study](https://craice.github.io/atman/case-study.html).
 
 ## Documentation
 
@@ -296,9 +296,9 @@ npm run build-storybook
 npm run export-tokens-studio
 ```
 
-### Vibe Coding Friendly
+### AI-Assisted Development
 
-Atman is built with AI-assisted development (vibe coding) as a first-class workflow. The codebase includes structured onboarding for AI assistants:
+Atman is built with AI-assisted development as a first-class workflow. The codebase includes structured onboarding for AI assistants:
 
 - **[`CLAUDE.md`](CLAUDE.md)** — Quick-start conventions and commands for AI sessions
 - **[`docs/ai-guide.md`](docs/ai-guide.md)** — Comprehensive component, token, and architecture reference
