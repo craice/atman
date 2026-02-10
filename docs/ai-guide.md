@@ -6,7 +6,7 @@
 
 ## 1. Quick Start
 
-**Atman** is a lean, accessible, framework-agnostic Design System built with Web Components (Lit) and TypeScript. It provides 16 production-ready components, 300+ design tokens, light/dark themes, and WCAG AA accessibility.
+**Atman** is a lean, accessible, framework-agnostic Design System built with Web Components (Lit) and TypeScript. It provides 24 production-ready components, 300+ design tokens, light/dark themes, and WCAG AA accessibility.
 
 ### Install
 
@@ -127,6 +127,27 @@ All components use the `atman-` prefix and are registered as custom elements.
 <atman-radio name="plan" value="pro">Pro</atman-radio>
 ```
 
+#### `<atman-switch>`
+- **Properties**: `checked`, `disabled`, `size` (`sm` | `md` | `lg`), `label-position` (`left` | `right`), `name`, `value`
+- **Slots**: default (label text)
+- **Events**: `atman-change`
+- **Parts**: `switch`, `track`, `thumb`, `label`
+
+```html
+<atman-switch checked>Enable notifications</atman-switch>
+<atman-switch size="lg" label-position="left">Dark mode</atman-switch>
+```
+
+#### `<atman-textarea>`
+- **Properties**: `label`, `placeholder`, `value`, `size` (`sm` | `md` | `lg`), `rows`, `maxlength`, `resize` (`none` | `vertical` | `both`), `auto-resize`, `disabled`, `required`, `error`, `helper-text`
+- **Events**: `atman-input`, `atman-change`
+- **Parts**: `container`, `label`, `textarea`, `error`, `counter`
+
+```html
+<atman-textarea label="Description" placeholder="Enter text..." rows="5" maxlength="500"></atman-textarea>
+<atman-textarea label="Notes" auto-resize helper-text="Auto-expands as you type"></atman-textarea>
+```
+
 ### Feedback
 
 #### `<atman-alert>`
@@ -159,6 +180,16 @@ All components use the `atman-` prefix and are registered as custom elements.
 ```html
 <atman-skeleton variant="text" width="200px"></atman-skeleton>
 <atman-skeleton variant="circular" width="48px" height="48px"></atman-skeleton>
+```
+
+#### `<atman-progress>`
+- **Properties**: `value` (0-100), `variant` (`primary` | `success` | `warning` | `destructive`), `size` (`sm` | `md` | `lg`), `type` (`linear` | `circular`), `indeterminate`, `show-label`
+- **Parts**: `progress`, `track`, `fill`, `label`, `circle`
+
+```html
+<atman-progress value="65" show-label>Uploading...</atman-progress>
+<atman-progress type="circular" value="75" variant="success" show-label></atman-progress>
+<atman-progress indeterminate></atman-progress>
 ```
 
 #### `<atman-tooltip>`
@@ -221,6 +252,93 @@ All components use the `atman-` prefix and are registered as custom elements.
 <atman-divider></atman-divider>
 <atman-divider label="OR"></atman-divider>
 <atman-divider orientation="vertical"></atman-divider>
+```
+
+### Navigation
+
+#### `<atman-breadcrumb>` + `<atman-breadcrumb-item>`
+- **Container**: `<nav aria-label="Breadcrumb">`
+- **Item Properties**: `href` (renders as link), `current` (marks current page)
+- **Item Slots**: default (text), `separator` (custom separator)
+- **Parts**: `nav`, `list`, `item`, `link`, `text`, `separator`
+
+```html
+<atman-breadcrumb>
+  <atman-breadcrumb-item href="/">Home</atman-breadcrumb-item>
+  <atman-breadcrumb-item href="/products">Products</atman-breadcrumb-item>
+  <atman-breadcrumb-item current>Current Page</atman-breadcrumb-item>
+</atman-breadcrumb>
+```
+
+#### `<atman-pagination>`
+- **Properties**: `total-pages`, `current-page`, `sibling-count`, `size` (`sm` | `md`)
+- **Events**: `atman-change` with `{ page }`
+- **Parts**: `nav`, `button`, `button-prev`, `button-next`, `button-page`, `ellipsis`
+
+```html
+<atman-pagination total-pages="20" current-page="5" sibling-count="1"></atman-pagination>
+```
+
+#### `<atman-dropdown>` + `<atman-menu-item>`
+- **Container Slots**: `trigger` (button/element that opens menu), default (menu items)
+- **Item Properties**: `disabled`, `type` (`default` | `divider`), `value`
+- **Item Slots**: default (text), `icon`
+- **Events**: `atman-select` with `{ value, item }`
+- **Parts**: `dropdown`, `menu`, `item`
+
+```html
+<atman-dropdown>
+  <atman-button slot="trigger" variant="secondary">Options</atman-button>
+  <atman-menu-item value="edit">Edit</atman-menu-item>
+  <atman-menu-item value="delete">Delete</atman-menu-item>
+  <atman-menu-item type="divider"></atman-menu-item>
+  <atman-menu-item value="archive" disabled>Archive</atman-menu-item>
+</atman-dropdown>
+```
+
+### Data Display
+
+#### `<atman-accordion>` + `<atman-accordion-item>`
+- **Container Properties**: `multiple` (allow multiple open)
+- **Item Properties**: `expanded`, `disabled`
+- **Item Slots**: `header` (trigger text), default (collapsible content)
+- **Item Events**: `atman-toggle` with `{ expanded }`
+- **Parts**: `accordion`, `item`, `header`, `icon`, `content`
+- **Keyboard**: Enter/Space to toggle, Arrow keys between items, Home/End
+
+```html
+<atman-accordion>
+  <atman-accordion-item expanded>
+    <span slot="header">Section 1</span>
+    Content for section 1.
+  </atman-accordion-item>
+  <atman-accordion-item>
+    <span slot="header">Section 2</span>
+    Content for section 2.
+  </atman-accordion-item>
+</atman-accordion>
+```
+
+#### `<atman-table>`
+- **Properties**: `columns` (array of `{ key, label, sortable?, width? }`), `data` (array of row objects), `striped`, `hoverable`, `selectable`, `loading`, `empty-text`
+- **Events**: `atman-sort` with `{ key, direction }`, `atman-selection-change` with `{ selectedRows, selectedData }`
+- **Parts**: `table`, `thead`, `tbody`, `th`, `td`, `row`, `empty`
+
+```html
+<atman-table
+  .columns=${[
+    { key: 'name', label: 'Name', sortable: true },
+    { key: 'email', label: 'Email' },
+    { key: 'role', label: 'Role', sortable: true },
+  ]}
+  .data=${[
+    { name: 'Alice', email: 'alice@example.com', role: 'Admin' },
+    { name: 'Bob', email: 'bob@example.com', role: 'User' },
+  ]}
+  striped
+  hoverable
+  selectable
+></atman-table>
 ```
 
 ---
@@ -512,21 +630,29 @@ Before merging any component change:
 ```
 atman/
 ├── src/
-│   ├── components/           # 16 Web Components
+│   ├── components/           # 24 Web Components
+│   │   ├── accordion/        #   <atman-accordion> + <atman-accordion-item>
 │   │   ├── alert/            #   <atman-alert>
 │   │   ├── avatar/           #   <atman-avatar>
 │   │   ├── badge/            #   <atman-badge>
+│   │   ├── breadcrumb/       #   <atman-breadcrumb> + <atman-breadcrumb-item>
 │   │   ├── button/           #   <atman-button>
 │   │   ├── card/             #   <atman-card>
 │   │   ├── checkbox/         #   <atman-checkbox>
 │   │   ├── divider/          #   <atman-divider>
+│   │   ├── dropdown/         #   <atman-dropdown> + <atman-menu-item>
 │   │   ├── icon/             #   <atman-icon>
 │   │   ├── input/            #   <atman-input>
 │   │   ├── modal/            #   <atman-modal>
+│   │   ├── pagination/       #   <atman-pagination>
+│   │   ├── progress/         #   <atman-progress>
 │   │   ├── radio/            #   <atman-radio> + <atman-radio-group>
 │   │   ├── select/           #   <atman-select>
 │   │   ├── skeleton/         #   <atman-skeleton>
+│   │   ├── switch/           #   <atman-switch>
+│   │   ├── table/            #   <atman-table>
 │   │   ├── tabs/             #   <atman-tabs> + <atman-tab>
+│   │   ├── textarea/         #   <atman-textarea>
 │   │   ├── toast/            #   <atman-toast> + <atman-toast-container>
 │   │   └── tooltip/          #   <atman-tooltip>
 │   ├── stories/              # Storybook story files
