@@ -16,6 +16,11 @@ export class AtmanSkeleton extends LitElement {
   static styles = css`
     :host {
       display: block;
+      min-width: 200px;
+    }
+
+    :host([variant='circular']) {
+      min-width: 0;
     }
 
     .skeleton {

@@ -246,7 +246,7 @@ import 'atman-ds/components/input';</pre>
       <div class="intro-section">
         <h2 class="intro-section-title">Components</h2>
         <p>
-          Atman includes 16 carefully crafted components organized into four categories:
+          Atman includes 24 carefully crafted components organized into six categories:
         </p>
 
         <div class="intro-grid">
@@ -256,15 +256,23 @@ import 'atman-ds/components/input';</pre>
           </div>
           <div class="intro-card">
             <h3 class="intro-card-title">Form Controls</h3>
-            <p class="intro-card-desc">Input, Select, Checkbox, Radio</p>
+            <p class="intro-card-desc">Input, Select, Checkbox, Radio, Switch, Textarea</p>
           </div>
           <div class="intro-card">
             <h3 class="intro-card-title">Feedback</h3>
-            <p class="intro-card-desc">Alert, Toast, Skeleton, Tooltip</p>
+            <p class="intro-card-desc">Alert, Toast, Skeleton, Tooltip, Progress</p>
           </div>
           <div class="intro-card">
             <h3 class="intro-card-title">Layout</h3>
             <p class="intro-card-desc">Card, Modal, Tabs, Divider</p>
+          </div>
+          <div class="intro-card">
+            <h3 class="intro-card-title">Navigation</h3>
+            <p class="intro-card-desc">Breadcrumb, Pagination, Dropdown</p>
+          </div>
+          <div class="intro-card">
+            <h3 class="intro-card-title">Data Display</h3>
+            <p class="intro-card-desc">Accordion, Table</p>
           </div>
         </div>
       </div>

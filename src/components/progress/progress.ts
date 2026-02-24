@@ -24,6 +24,7 @@ export class AtmanProgress extends LitElement {
   static styles = css`
     :host {
       display: block;
+      min-width: 200px;
     }
 
     .progress {
@@ -101,22 +102,12 @@ export class AtmanProgress extends LitElement {
     .circular-fill--destructive { stroke: var(--atman-color-destructive); }
 
     .circular-fill--indeterminate {
-      animation: circular-indeterminate 1.5s ease-in-out infinite;
+      animation: circular-indeterminate 1s linear infinite;
     }
 
     @keyframes circular-indeterminate {
-      0% {
-        stroke-dashoffset: 280;
-        transform: rotate(0deg);
-      }
-      50% {
-        stroke-dashoffset: 75;
-        transform: rotate(135deg);
-      }
-      100% {
-        stroke-dashoffset: 280;
-        transform: rotate(360deg);
-      }
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     .circular-label {
@@ -270,7 +261,7 @@ export class AtmanProgress extends LitElement {
             cy=${size / 2}
             r=${radius}
             stroke-width=${strokeWidth}
-            stroke-dasharray=${circumference}
+            stroke-dasharray=${this.indeterminate ? `${circumference * 0.75} ${circumference * 0.25}` : circumference}
             stroke-dashoffset=${this.indeterminate ? 0 : offset}
             style=${this.indeterminate ? `transform-origin: ${size / 2}px ${size / 2}px` : ''}
           />

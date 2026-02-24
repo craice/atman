@@ -53,7 +53,9 @@ export const NotificationCenter: Story = {
         color: white;
         font-size: 12px;
         font-weight: 600;
-        padding: 2px 8px;
+        padding: 2px 6px;
+        min-width: 20px;
+        text-align: center;
         border-radius: 10px;
       }
 
@@ -199,12 +201,12 @@ export const NotificationCenter: Story = {
         </div>
       </div>
 
-      <atman-tabs>
-        <atman-tab slot="tab" selected>All</atman-tab>
-        <atman-tab slot="tab">Unread</atman-tab>
-        <atman-tab slot="tab">Mentions</atman-tab>
+      <atman-tabs value="all">
+        <atman-tab slot="tab" value="all">All</atman-tab>
+        <atman-tab slot="tab" value="unread">Unread</atman-tab>
+        <atman-tab slot="tab" value="mentions">Mentions</atman-tab>
 
-        <atman-tab-panel slot="panel" selected>
+        <atman-tab-panel value="all">
           <div class="notification-list">
             <div class="notification-item unread" style="position: relative;">
               <div class="notification-icon success">
@@ -298,7 +300,7 @@ export const NotificationCenter: Story = {
           </div>
         </atman-tab-panel>
 
-        <atman-tab-panel slot="panel">
+        <atman-tab-panel value="unread">
           <div class="notification-list">
             <div class="notification-item unread" style="position: relative;">
               <div class="notification-icon success">
@@ -327,7 +329,7 @@ export const NotificationCenter: Story = {
           </div>
         </atman-tab-panel>
 
-        <atman-tab-panel slot="panel">
+        <atman-tab-panel value="mentions">
           <div class="empty-state">
             <div class="empty-icon">
               <atman-icon name="at-sign" size="lg"></atman-icon>

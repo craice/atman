@@ -142,21 +142,21 @@ export const AvatarGroup: Story = {
       <atman-avatar
         src="https://i.pravatar.cc/150?img=1"
         alt="User 1"
-        style="margin-right: -8px; position: relative; z-index: 4; border: 2px solid var(--atman-color-background);"
+        style="margin-right: -8px; position: relative; z-index: 4; border-radius: 9999px; box-shadow: 0 0 0 2px var(--atman-color-background);"
       ></atman-avatar>
       <atman-avatar
         src="https://i.pravatar.cc/150?img=2"
         alt="User 2"
-        style="margin-right: -8px; position: relative; z-index: 3; border: 2px solid var(--atman-color-background);"
+        style="margin-right: -8px; position: relative; z-index: 3; border-radius: 9999px; box-shadow: 0 0 0 2px var(--atman-color-background);"
       ></atman-avatar>
       <atman-avatar
         src="https://i.pravatar.cc/150?img=3"
         alt="User 3"
-        style="margin-right: -8px; position: relative; z-index: 2; border: 2px solid var(--atman-color-background);"
+        style="margin-right: -8px; position: relative; z-index: 2; border-radius: 9999px; box-shadow: 0 0 0 2px var(--atman-color-background);"
       ></atman-avatar>
       <atman-avatar
         initials="+5"
-        style="position: relative; z-index: 1; border: 2px solid var(--atman-color-background);"
+        style="position: relative; z-index: 1; border-radius: 9999px; box-shadow: 0 0 0 2px var(--atman-color-background);"
       ></atman-avatar>
     </div>
   `,

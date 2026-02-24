@@ -153,7 +153,7 @@ export const LongContent: Story = {
 export const NoArrow: Story = {
   render: () => html`
     <div style="padding: 60px; display: flex; justify-content: center;">
-      <atman-tooltip content="Tooltip without arrow" ?arrow=${false}>
+      <atman-tooltip content="Tooltip without arrow" .arrow=${false}>
         <atman-button variant="secondary">No arrow</atman-button>
       </atman-tooltip>
     </div>

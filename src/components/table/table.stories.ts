@@ -21,6 +21,9 @@ const meta: Meta = {
   title: 'Components/Data Display/Table',
   component: 'atman-table',
   tags: ['autodocs', 'stable'],
+  parameters: {
+    layout: 'padded',
+  },
   argTypes: {
     striped: { control: 'boolean' },
     hoverable: { control: 'boolean' },

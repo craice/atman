@@ -35,12 +35,12 @@ export const Default: Story = {
         <p style="margin: 0; color: var(--atman-color-text-secondary);">Manage your account settings and preferences.</p>
       </div>
 
-      <atman-tabs>
-        <atman-tab slot="tab" value="profile" selected>Profile</atman-tab>
+      <atman-tabs value="profile">
+        <atman-tab slot="tab" value="profile">Profile</atman-tab>
         <atman-tab slot="tab" value="notifications">Notifications</atman-tab>
         <atman-tab slot="tab" value="security">Security</atman-tab>
 
-        <atman-tab-panel slot="panel" value="profile">
+        <atman-tab-panel value="profile">
           <atman-card>
             <h3 slot="header" style="margin: 0; font-size: 18px; font-weight: 600;">Profile Information</h3>
 
@@ -71,7 +71,7 @@ export const Default: Story = {
           </atman-card>
         </atman-tab-panel>
 
-        <atman-tab-panel slot="panel" value="notifications">
+        <atman-tab-panel value="notifications">
           <atman-card>
             <h3 slot="header" style="margin: 0; font-size: 18px; font-weight: 600;">Notification Preferences</h3>
 
@@ -122,7 +122,7 @@ export const Default: Story = {
           </atman-card>
         </atman-tab-panel>
 
-        <atman-tab-panel slot="panel" value="security">
+        <atman-tab-panel value="security">
           <div style="display: flex; flex-direction: column; gap: 24px;">
             <atman-card>
               <h3 slot="header" style="margin: 0; font-size: 18px; font-weight: 600;">Change Password</h3>

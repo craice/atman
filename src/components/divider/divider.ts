@@ -171,14 +171,10 @@ export class AtmanDivider extends LitElement {
         aria-orientation=${this.orientation}
       >
         <div part="line" class="line"></div>
-        ${this.hasLabel || true
-          ? html`
-              <span part="label" class="label" style=${this.hasLabel ? '' : 'display: none'}>
-                <slot @slotchange=${this.handleSlotChange}></slot>
-              </span>
-            `
-          : nothing}
-        <div part="line" class="line"></div>
+        <span part="label" class="label" ?hidden=${!this.hasLabel}>
+          <slot @slotchange=${this.handleSlotChange}></slot>
+        </span>
+        ${this.hasLabel ? html`<div part="line" class="line"></div>` : nothing}
       </div>
     `;
   }

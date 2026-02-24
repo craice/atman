@@ -158,6 +158,8 @@ const handleClick = () => {
 | `<atman-select>` | Dropdown select with keyboard navigation |
 | `<atman-checkbox>` | Checkbox with indeterminate state |
 | `<atman-radio>` | Radio buttons with group support |
+| `<atman-switch>` | Toggle switch with label position options |
+| `<atman-textarea>` | Multiline text input with auto-resize and character count |
 
 ### Feedback
 
@@ -167,6 +169,7 @@ const handleClick = () => {
 | `<atman-toast>` | Toast notifications with auto-dismiss |
 | `<atman-skeleton>` | Loading placeholders |
 | `<atman-tooltip>` | Tooltips with placement options |
+| `<atman-progress>` | Progress bar (linear & circular) with indeterminate mode |
 
 ### Layout
 
@@ -176,6 +179,21 @@ const handleClick = () => {
 | `<atman-modal>` | Modal dialogs with focus trap |
 | `<atman-tabs>` | Tabbed interface with keyboard navigation |
 | `<atman-divider>` | Visual separator with optional label |
+
+### Navigation
+
+| Component | Description |
+|-----------|-------------|
+| `<atman-breadcrumb>` | Breadcrumb trail with link and current-page support |
+| `<atman-pagination>` | Page navigation with ellipsis for large ranges |
+| `<atman-dropdown>` | Dropdown menu with keyboard navigation and icon support |
+
+### Data Display
+
+| Component | Description |
+|-----------|-------------|
+| `<atman-accordion>` | Collapsible sections with single or multiple expand modes |
+| `<atman-table>` | Data table with sorting, selection, striped rows, and empty/loading states |
 
 ## Theming
 

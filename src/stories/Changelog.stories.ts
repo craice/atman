@@ -160,12 +160,71 @@ export const Changelog: Story = {
       <div class="changelog-latest">
         <p class="changelog-latest-label">Latest Release</p>
         <div class="changelog-version-header">
-          <h2 class="changelog-version-number">v0.1.0</h2>
-          <span class="changelog-version-date">January 2026</span>
+          <h2 class="changelog-version-number">v1.0.0</h2>
+          <span class="changelog-version-date">February 2026</span>
         </div>
         <p style="color: #616161; margin: 0">
-          Initial release of Atman Design System with 16 accessible components.
+          24 production-ready components. 8 new components, Storybook rendering fixes (canvas background, Progress, Skeleton, Table, Docs theme), and Do &amp; Don't guidelines.
         </p>
+      </div>
+
+      <div class="changelog-version">
+        <div class="changelog-version-header">
+          <h2 class="changelog-version-number">v1.0.0</h2>
+          <span class="changelog-version-date">February 24, 2026</span>
+        </div>
+
+        <div class="changelog-section">
+          <h3 class="changelog-section-title">
+            <span class="changelog-badge changelog-badge-new">New</span>
+            8 New Components
+          </h3>
+          <ul class="changelog-list">
+            <li><span class="changelog-component">Switch</span> - Toggle switch for boolean settings with on/off states</li>
+            <li><span class="changelog-component">Textarea</span> - Multi-line text input with auto-resize support</li>
+            <li><span class="changelog-component">Progress</span> - Linear and circular progress indicators with indeterminate state</li>
+            <li><span class="changelog-component">Breadcrumb</span> - Navigation breadcrumbs with custom separator</li>
+            <li><span class="changelog-component">Accordion</span> - Expandable content sections with single/multi-expand modes</li>
+            <li><span class="changelog-component">Pagination</span> - Page navigation with sibling/boundary page controls</li>
+            <li><span class="changelog-component">Dropdown</span> - Action menus with icons, dividers, and disabled items</li>
+            <li><span class="changelog-component">Table</span> - Data tables with sorting, selection, and striped rows</li>
+          </ul>
+        </div>
+
+        <div class="changelog-section">
+          <h3 class="changelog-section-title">
+            <span class="changelog-badge changelog-badge-fixed">Fixed</span>
+            Bug Fixes
+          </h3>
+          <ul class="changelog-list">
+            <li><span class="changelog-component">Storybook</span> - Canvas now uses background-subtle (#FAFAFA) in light mode so white surface components (Card, Table) are visible</li>
+            <li><span class="changelog-component">Storybook</span> - Docs preview containers now match the active light/dark theme background</li>
+            <li><span class="changelog-component">Progress</span> - Circular indeterminate animation now scales correctly for all sizes (sm, md, lg)</li>
+            <li><span class="changelog-component">Progress</span> - Linear stories now have explicit width so the bar renders in Storybook's centered layout</li>
+            <li><span class="changelog-component">Skeleton</span> - Stories now have explicit width containers so skeletons render in Storybook's centered layout</li>
+            <li><span class="changelog-component">Table</span> - Story layout changed to padded so table width resolves correctly</li>
+            <li><span class="changelog-component">Tooltip</span> - NoArrow story now correctly hides the arrow when <code>arrow=false</code></li>
+            <li><span class="changelog-component">Divider</span> - Fixed <code>|| true</code> logic error that prevented label-conditional rendering; Spacing story now shows distinct spacings using flex container</li>
+            <li><span class="changelog-component">Avatar</span> - AvatarGroup separator ring is now circular (box-shadow instead of border)</li>
+            <li><span class="changelog-component">Dropdown</span> - Added padding to prevent menu items from being clipped by canvas boundaries</li>
+            <li><span class="changelog-component">Examples</span> - Fixed tabs panels in Settings Page, User Profile, and Notification Center (removed incorrect <code>slot="panel"</code> attribute)</li>
+            <li><span class="changelog-component">Examples</span> - Removed overflowing <code>::before</code> element from featured Pricing Card</li>
+            <li><span class="changelog-component">Examples</span> - Notification count badge now renders as a circle for single-digit numbers</li>
+          </ul>
+        </div>
+
+        <div class="changelog-section">
+          <h3 class="changelog-section-title">
+            <span class="changelog-badge changelog-badge-improved">Improved</span>
+            Documentation
+          </h3>
+          <ul class="changelog-list">
+            <li>Added Do &amp; Don't guidelines to Button, Badge, Alert, Input, and Modal component docs</li>
+            <li>Removed standalone Guidelines page — best practices now live inside each component's story</li>
+            <li>Updated Introduction page to reflect 24 components across 6 categories</li>
+            <li>Updated landing page, README, and case study with Phase 10 additions</li>
+          </ul>
+        </div>
       </div>
 
       <div class="changelog-version">
@@ -236,10 +295,8 @@ export const Changelog: Story = {
           <h3 class="changelog-section-title">Upcoming Features</h3>
           <ul class="changelog-list">
             <li><span class="changelog-component">DatePicker</span> - Date selection with calendar</li>
-            <li><span class="changelog-component">Dropdown</span> - Dropdown menus for actions</li>
-            <li><span class="changelog-component">Table</span> - Data tables with sorting and selection</li>
-            <li><span class="changelog-component">Pagination</span> - Navigation for paginated content</li>
-            <li><span class="changelog-component">Breadcrumb</span> - Navigation breadcrumbs</li>
+            <li><span class="changelog-component">Combobox</span> - Searchable select with multi-select support</li>
+            <li><span class="changelog-component">FileUpload</span> - Drag-and-drop file upload with preview</li>
             <li>React wrapper components for better DX</li>
             <li>Vue wrapper components</li>
             <li>Additional theme presets</li>

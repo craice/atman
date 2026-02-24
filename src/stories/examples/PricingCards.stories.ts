@@ -94,17 +94,6 @@ export const PricingCards: Story = {
         border-width: 2px;
       }
 
-      .pricing-card.featured::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: var(--atman-color-primary, #1A73E8);
-        border-radius: 16px 16px 0 0;
-      }
-
       .plan-badge {
         position: absolute;
         top: -12px;

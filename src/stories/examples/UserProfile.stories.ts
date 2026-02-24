@@ -192,12 +192,12 @@ export const UserProfile: Story = {
         </p>
       </atman-card>
 
-      <atman-tabs style="margin-top: 32px;">
-        <atman-tab slot="tab" selected>Recent Activity</atman-tab>
-        <atman-tab slot="tab">Projects</atman-tab>
-        <atman-tab slot="tab">Collections</atman-tab>
+      <atman-tabs style="margin-top: 32px;" value="activity">
+        <atman-tab slot="tab" value="activity">Recent Activity</atman-tab>
+        <atman-tab slot="tab" value="projects">Projects</atman-tab>
+        <atman-tab slot="tab" value="collections">Collections</atman-tab>
 
-        <atman-tab-panel slot="panel" selected>
+        <atman-tab-panel value="activity">
           <div class="activity-item">
             <atman-icon name="folder-plus" size="md" style="color: var(--atman-color-primary)"></atman-icon>
             <div class="activity-content">
@@ -223,8 +223,8 @@ export const UserProfile: Story = {
             <span class="activity-time">1 day ago</span>
           </div>
         </atman-tab-panel>
-        <atman-tab-panel slot="panel">Projects content</atman-tab-panel>
-        <atman-tab-panel slot="panel">Collections content</atman-tab-panel>
+        <atman-tab-panel value="projects">Projects content</atman-tab-panel>
+        <atman-tab-panel value="collections">Collections content</atman-tab-panel>
       </atman-tabs>
     </div>
   `,

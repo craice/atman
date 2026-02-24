@@ -54,14 +54,17 @@ const preview: Preview = {
             'Primitives',
             ['Button', 'Badge', 'Avatar', 'Icon'],
             'Form Controls',
-            ['Input', 'Select', 'Checkbox', 'Radio'],
+            ['Input', 'Select', 'Checkbox', 'Radio', 'Switch', 'Textarea'],
             'Feedback',
-            ['Alert', 'Toast', 'Skeleton', 'Tooltip'],
+            ['Alert', 'Toast', 'Skeleton', 'Tooltip', 'Progress'],
             'Layout',
             ['Card', 'Modal', 'Tabs', 'Divider'],
+            'Navigation',
+            ['Breadcrumb', 'Pagination', 'Dropdown'],
+            'Data Display',
+            ['Accordion', 'Table'],
           ],
           'Examples',
-          'Guidelines',
           'Accessibility',
           'Changelog',
         ],
@@ -93,9 +96,34 @@ const preview: Preview = {
     (story, context) => {
       const theme = context.globals.theme || 'light';
       document.documentElement.setAttribute('data-theme', theme);
+      // Use subtle background in light mode so white surface components stand out
+      document.body.style.backgroundColor = theme === 'dark'
+        ? 'var(--atman-color-background)'
+        : 'var(--atman-color-background-subtle)';
+
+      // Inject CSS once to theme the Storybook docs preview containers
+      if (!document.getElementById('atman-docs-theme')) {
+        const style = document.createElement('style');
+        style.id = 'atman-docs-theme';
+        style.textContent = `
+          .innerZoomElementWrapper,
+          .sbdocs-preview,
+          .docs-story,
+          .sb-story-preview-container {
+            background-color: var(--atman-color-background-subtle) !important;
+          }
+          [data-theme="dark"] .innerZoomElementWrapper,
+          [data-theme="dark"] .sbdocs-preview,
+          [data-theme="dark"] .docs-story,
+          [data-theme="dark"] .sb-story-preview-container {
+            background-color: var(--atman-color-background) !important;
+          }
+        `;
+        document.head.appendChild(style);
+      }
 
       return html`
-        <div style="padding: 2rem; box-sizing: border-box; background-color: var(--atman-color-background-subtle);">
+        <div style="padding: 2rem; box-sizing: border-box;">
           ${story()}
         </div>
       `;

@@ -201,3 +201,56 @@ export const UseCases: Story = {
     </div>
   `,
 };
+
+export const DoAndDont: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Best practices for using badges effectively.',
+      },
+    },
+  },
+  render: () => html`
+    <style>
+      .dodont-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 800px; }
+      .dodont-card { border-radius: 12px; overflow: hidden; }
+      .dodont-do { border: 2px solid #1E8E3E; }
+      .dodont-dont { border: 2px solid #D93025; }
+      .dodont-header { padding: 12px 16px; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+      .dodont-do .dodont-header { background: #E6F4EA; color: #1E8E3E; }
+      .dodont-dont .dodont-header { background: #FCE8E6; color: #D93025; }
+      .dodont-preview { padding: 32px; background: var(--atman-color-background, #FFFFFF); display: flex; align-items: center; justify-content: center; min-height: 120px; }
+      .dodont-caption { padding: 16px; background: var(--atman-color-background-subtle, #F5F5F5); font-size: 14px; color: var(--atman-color-text-secondary, #616161); line-height: 1.5; }
+    </style>
+    <div class="dodont-grid">
+      <div class="dodont-card dodont-do">
+        <div class="dodont-header">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Do
+        </div>
+        <div class="dodont-preview">
+          <div style="display: flex; gap: 8px;">
+            <atman-badge variant="success">Active</atman-badge>
+            <atman-badge variant="warning">Pending</atman-badge>
+            <atman-badge variant="error">Expired</atman-badge>
+          </div>
+        </div>
+        <div class="dodont-caption">Use semantic colors consistently — green for positive, yellow for caution, red for negative.</div>
+      </div>
+      <div class="dodont-card dodont-dont">
+        <div class="dodont-header">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Don't
+        </div>
+        <div class="dodont-preview">
+          <div style="display: flex; gap: 8px;">
+            <atman-badge variant="error">Active</atman-badge>
+            <atman-badge variant="success">Pending</atman-badge>
+            <atman-badge variant="warning">Expired</atman-badge>
+          </div>
+        </div>
+        <div class="dodont-caption">Don't use colors arbitrarily — users rely on color to quickly understand status.</div>
+      </div>
+    </div>
+  `,
+};

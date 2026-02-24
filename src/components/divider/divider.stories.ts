@@ -85,14 +85,14 @@ export const LabelPositions: Story = {
 
 export const Spacing: Story = {
   render: () => html`
-    <div>
-      <p>Small spacing</p>
+    <div style="display: flex; flex-direction: column; width: 400px;">
+      <p style="margin: 0; font-size: var(--atman-font-size-sm); color: var(--atman-color-text-secondary);">Small (8px top + 8px bottom)</p>
       <atman-divider spacing="sm"></atman-divider>
-      <p>Medium spacing</p>
+      <p style="margin: 0; font-size: var(--atman-font-size-sm); color: var(--atman-color-text-secondary);">Medium (16px top + 16px bottom)</p>
       <atman-divider spacing="md"></atman-divider>
-      <p>Large spacing</p>
+      <p style="margin: 0; font-size: var(--atman-font-size-sm); color: var(--atman-color-text-secondary);">Large (32px top + 32px bottom)</p>
       <atman-divider spacing="lg"></atman-divider>
-      <p>End</p>
+      <p style="margin: 0; font-size: var(--atman-font-size-sm); color: var(--atman-color-text-secondary);">End</p>
     </div>
   `,
 };

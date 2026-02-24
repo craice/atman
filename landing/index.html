@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Atman Design System — Essence over excess</title>
-  <meta name="description" content="A lean, accessible, and modern Design System built with Web Components. Framework-agnostic. WCAG AA compliant. 16 essential components.">
+  <meta name="description" content="A lean, accessible, and modern Design System built with Web Components. Framework-agnostic. WCAG AA compliant. 24 essential components.">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Atman Design System — Essence over excess">
@@ -101,7 +101,7 @@
       <div class="container">
         <div class="stats-grid fade-in">
           <div class="stat">
-            <div class="stat-value">16</div>
+            <div class="stat-value">24</div>
             <div class="stat-label">Components</div>
           </div>
           <div class="stat">
@@ -184,7 +184,7 @@
     <section id="components" class="section section-alt">
       <div class="container">
         <div class="section-header fade-in">
-          <h2>16 Essential Components</h2>
+          <h2>24 Essential Components</h2>
           <p>Every component you need. Nothing you don't.</p>
         </div>
 
@@ -194,6 +194,8 @@
           <button class="category-tab" data-category="forms" role="tab" aria-selected="false">Form Controls</button>
           <button class="category-tab" data-category="feedback" role="tab" aria-selected="false">Feedback</button>
           <button class="category-tab" data-category="layout" role="tab" aria-selected="false">Layout</button>
+          <button class="category-tab" data-category="navigation" role="tab" aria-selected="false">Navigation</button>
+          <button class="category-tab" data-category="data" role="tab" aria-selected="false">Data Display</button>
         </div>
 
         <!-- Primitives -->
@@ -267,6 +269,19 @@
                 <atman-radio name="demo-radio" value="a" checked>Option A</atman-radio>
               </div>
             </div>
+            <div class="showcase-item">
+              <h4>Switch</h4>
+              <div class="showcase-demo" style="flex-direction: column; gap: 8px;">
+                <atman-switch checked>Notifications</atman-switch>
+                <atman-switch>Dark mode</atman-switch>
+              </div>
+            </div>
+            <div class="showcase-item">
+              <h4>Textarea</h4>
+              <div class="showcase-demo">
+                <atman-textarea label="Notes" placeholder="Enter text..." rows="3" size="sm"></atman-textarea>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -278,6 +293,13 @@
               <div class="showcase-demo" style="flex-direction: column; align-items: stretch;">
                 <atman-alert variant="info" alert-title="Info">This is an informational message.</atman-alert>
                 <atman-alert variant="success" alert-title="Success">Operation completed.</atman-alert>
+              </div>
+            </div>
+            <div class="showcase-item">
+              <h4>Progress</h4>
+              <div class="showcase-demo" style="flex-direction: column; gap: 12px; align-items: stretch;">
+                <atman-progress value="65" show-label></atman-progress>
+                <atman-progress value="30" variant="success" show-label></atman-progress>
               </div>
             </div>
             <div class="showcase-item">
@@ -325,6 +347,88 @@
                 <atman-modal modal-title="Example Modal" size="sm">
                   <p>This is an Atman modal dialog.</p>
                 </atman-modal>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="component-category" data-category="navigation" role="tabpanel">
+          <div class="showcase-grid">
+            <div class="showcase-item" style="grid-column: span 2;">
+              <h4>Breadcrumb</h4>
+              <div class="showcase-demo">
+                <atman-breadcrumb>
+                  <atman-breadcrumb-item href="#">Home</atman-breadcrumb-item>
+                  <atman-breadcrumb-item href="#">Products</atman-breadcrumb-item>
+                  <atman-breadcrumb-item current>Current Page</atman-breadcrumb-item>
+                </atman-breadcrumb>
+              </div>
+            </div>
+            <div class="showcase-item" style="grid-column: span 2;">
+              <h4>Pagination</h4>
+              <div class="showcase-demo">
+                <atman-pagination total-pages="10" current-page="4" sibling-count="1"></atman-pagination>
+              </div>
+            </div>
+            <div class="showcase-item">
+              <h4>Dropdown</h4>
+              <div class="showcase-demo">
+                <atman-dropdown>
+                  <atman-button slot="trigger" variant="secondary" size="sm">Options</atman-button>
+                  <atman-menu-item value="edit">Edit</atman-menu-item>
+                  <atman-menu-item value="duplicate">Duplicate</atman-menu-item>
+                  <atman-menu-item type="divider"></atman-menu-item>
+                  <atman-menu-item value="delete">Delete</atman-menu-item>
+                </atman-dropdown>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Display -->
+        <div class="component-category" data-category="data" role="tabpanel">
+          <div class="showcase-grid">
+            <div class="showcase-item" style="grid-column: span 2;">
+              <h4>Accordion</h4>
+              <div class="showcase-demo" style="flex-direction: column; align-items: stretch;">
+                <atman-accordion>
+                  <atman-accordion-item expanded>
+                    <span slot="header">What is Atman?</span>
+                    A lean, accessible design system built with Web Components.
+                  </atman-accordion-item>
+                  <atman-accordion-item>
+                    <span slot="header">Is it framework-agnostic?</span>
+                    Yes — works with React, Vue, Angular, Svelte, or plain HTML.
+                  </atman-accordion-item>
+                </atman-accordion>
+              </div>
+            </div>
+            <div class="showcase-item" style="grid-column: span 2;">
+              <h4>Table</h4>
+              <div class="showcase-demo" style="align-items: stretch; overflow-x: auto;">
+                <atman-table
+                  striped
+                  hoverable
+                  id="demo-table"
+                ></atman-table>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    var t = document.getElementById('demo-table');
+                    if (t) {
+                      t.columns = [
+                        { key: 'name', label: 'Name', sortable: true },
+                        { key: 'role', label: 'Role' },
+                        { key: 'status', label: 'Status' }
+                      ];
+                      t.data = [
+                        { name: 'Alice', role: 'Designer', status: 'Active' },
+                        { name: 'Bob', role: 'Developer', status: 'Active' },
+                        { name: 'Carol', role: 'Manager', status: 'Inactive' }
+                      ];
+                    }
+                  });
+                </script>
               </div>
             </div>
           </div>
