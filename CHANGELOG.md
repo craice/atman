@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/craice/atman/compare/v1.0.0...v1.0.1) (2026-03-30)
+
+
+### Bug Fixes
+
+* **storybook:** fix Progress, Skeleton, Table and Docs theme rendering ([c8f59c2](https://github.com/craice/atman/commit/c8f59c28ce470b1c119cd3dc8309fed2460dd9d6))
+
 ## [1.0.0](https://github.com/craice/atman/releases/tag/v1.0.0) (2026-02-24)
 
 ### Features

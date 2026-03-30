@@ -1,6 +1,6 @@
 {
   "name": "atman-ds",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lean, accessible, and modern Design System built with Web Components",
   "type": "module",
   "main": "dist/index.js",
