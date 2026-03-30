@@ -45,3 +45,7 @@ deploy/
 
 # Landing page build artifacts
 landing/lib/
+atman/atman.ai
+atman/atman-favicon.png
+atman/atman-logo-full.svg
+atman/atman-logo-icon.svg
